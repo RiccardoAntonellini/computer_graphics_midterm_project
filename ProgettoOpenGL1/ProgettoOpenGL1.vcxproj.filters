@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne\GLAD">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne\GLFW">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne\ImGui">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne\ImGui\Header Files">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Dipendenze esterne\ImGui\Source Files">
+      <UniqueIdentifier>{A0E1C663-4B08-4A4D-B567-80B6071C5009}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShapeGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\glad.c">
+      <Filter>Dipendenze esterne\GLAD</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_demo.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_draw.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_impl_glfw.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_impl_opengl3.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_tables.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dependencies_GL_GLFW\ImGui\imgui_widgets.cpp">
+      <Filter>Dipendenze esterne\ImGui\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MarioView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hammer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BarrelStack.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Barrels.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BarrelsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DonkeyKong.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DonkeyKongView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PaulineView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Shots.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShotsView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MeshData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShapeGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\include\glad\glad.h">
+      <Filter>Dipendenze esterne\GLAD</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\include\KHR\khrplatform.h">
+      <Filter>Dipendenze esterne\GLAD</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\include\GLFW\glfw3.h">
+      <Filter>Dipendenze esterne\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\include\GLFW\glfw3native.h">
+      <Filter>Dipendenze esterne\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imconfig.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imgui.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imgui_impl_glfw.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imgui_impl_opengl3.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imgui_impl_opengl3_loader.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imgui_internal.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imstb_rectpack.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imstb_textedit.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dependencies_GL_GLFW\ImGui\imstb_truetype.h">
+      <Filter>Dipendenze esterne\ImGui\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformConfig.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetsUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MarioView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hammer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarrelStack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Barrels.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BarrelsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DonkeyKong.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DonkeyKongView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pauline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PaulineView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HudInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullets.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Shots.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShotsView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="dependencies_GL_GLFW\lib\glfw3.lib">
+      <Filter>Dipendenze esterne\GLFW</Filter>
+    </None>
+    <None Include="README_PRIMA_DI_INIZIARE.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+# Materiali delle curve Hermite
+newmtl Curva_1
+Ka 0 0 0
+Kd 0.530259371 0.383726716 0.142115608
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl Curva_2
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+d 1
+illum 1
+
+newmtl Curva_3
+Ka 0 0 0
+Kd 0.742120624 0.809798241 0.766484499
+Ks 0 0 0
+d 1
+illum 1
+
