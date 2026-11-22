@@ -83,7 +83,7 @@
     <ClCompile Include="BarrelsView.cpp" />
     <ClCompile Include="Bullets.cpp" />
     <ClCompile Include="BulletsView.cpp" />
-    <ClCompile Include="CoinRenderer.cpp" />
+    <ClCompile Include="BulletRenderer.cpp" />
     <ClCompile Include="DonkeyKong.cpp" />
     <ClCompile Include="DonkeyKongView.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -120,7 +120,7 @@
     <ClInclude Include="BarrelsView.h" />
     <ClInclude Include="Bullets.h" />
     <ClInclude Include="BulletsView.h" />
-    <ClInclude Include="CoinRenderer.h" />
+    <ClInclude Include="BulletRenderer.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Controls.h" />
@@ -166,7 +166,7 @@
   <ItemGroup>
     <None Include="dependencies_GL_GLFW\lib\glfw3.lib" />
     <None Include="packages.config" />
-    <None Include="README_PRIMA_DI_INIZIARE.txt" />
+    <None Include="README.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="packages\glm.1.0.3\build\native\glm.targets" Condition="Exists('packages\glm.1.0.3\build\native\glm.targets')" />

@@ -22,6 +22,7 @@ Hud::Hud(GLFWwindow* window)
     ImGui::StyleColorsDark();
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330");
+	ImGui::GetIO().IniFilename = nullptr; // Disabilita il salvataggio della configurazione su file.
 }
 
 /**
