@@ -7,17 +7,15 @@
  * @class Pauline
  * @brief Stato logico statico di Pauline sulla piattaforma superiore.
  *
- * La condizione di vittoria al contatto con Mario è verificata da `Game` tramite `box()`.
+ * La condizione di vittoria al contatto con Mario è verificata da Game tramite box().
  */
 class Pauline {
 public:
     /**
-     * @brief Posiziona i piedi di Pauline sulla piattaforma `PaulineConfig::PLATFORM` all'ascissa `X`.
+     * @brief Posiziona i piedi di Pauline sulla piattaforma PaulineConfig::PLATFORM all'ascissa X.
      * @param level Livello corrente.
      */
-    explicit Pauline(const Level& level)
-        : m_feet(PaulineConfig::X, level.platforms()[PaulineConfig::PLATFORM].yAt(PaulineConfig::X))
-    {}
+    explicit Pauline(const Level& level) : m_feet(PaulineConfig::X, level.platforms()[PaulineConfig::PLATFORM].yAt(PaulineConfig::X)) {}
 
     /**
      * @brief Restituisce le coordinate mondo dei piedi di Pauline (origine del Rig).
@@ -34,8 +32,7 @@ public:
      */
     AABB box() const
     {
-        return { { m_feet.x, m_feet.y + PaulineConfig::HEIGHT * 0.5f },
-                 { PaulineConfig::HALF_W, PaulineConfig::HEIGHT * 0.5f } };
+        return { { m_feet.x, m_feet.y + PaulineConfig::HEIGHT * 0.5f }, { PaulineConfig::HALF_W, PaulineConfig::HEIGHT * 0.5f } };
     }
 
 private:

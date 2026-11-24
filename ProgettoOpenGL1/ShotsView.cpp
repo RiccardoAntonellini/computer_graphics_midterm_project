@@ -5,7 +5,7 @@
 using namespace TransformConfig;
 
 /**
- * @brief Crea una singola Geometry disco (raggio unitario) condivisa da tutte le istanze del pool.
+ * @brief Crea una singola Geometry disco condivisa da tutte le istanze del pool.
  */
 ShotsView::ShotsView(Scene& scene)
 {
@@ -24,8 +24,8 @@ void ShotsView::update(Scene& scene, const Shots& shots)
     for (std::size_t i = 0; i < m_instances.size(); ++i) {
         const Shot& shot = shots.all()[i];
         scene.instance(m_instances[i]).visible = shot.active;
+
         if (shot.active)
-            scene.instance(m_instances[i]).modelMatrix =
-            makeUniform(shot.position, 0.0f, ShotConfig::RADIUS);
+            scene.instance(m_instances[i]).modelMatrix = makeUniform(shot.position, 0.0f, ShotConfig::RADIUS);
     }
 }

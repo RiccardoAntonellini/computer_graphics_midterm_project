@@ -7,7 +7,7 @@
 
 /**
  * @class InputReader
- * @brief Traduce lo stato della tastiera GLFW in una struct `Controls` indipendente dalla libreria.
+ * @brief Traduce lo stato della tastiera GLFW in una struct Controls indipendente dalla libreria.
  *
  * Mantiene lo stato del frame precedente per i comandi discreti (salto, sparo, restart, debug)
  * in modo da rilevare il fronte di salita (rising edge):

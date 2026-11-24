@@ -33,12 +33,11 @@ void Mario::reset(const Level& level)
 }
 
 /**
- * @brief Restituisce la AABB di Mario centrata in `(feet.x, feet.y + MARIO_HEIGHT / 2)`.
+ * @brief Restituisce la AABB di Mario centrata in (feet.x, feet.y + MARIO_HEIGHT / 2).
  */
 AABB Mario::box() const
 {
-    return { { m_feet.x, m_feet.y + MARIO_HEIGHT * 0.5f },
-             { MARIO_WIDTH * 0.5f, MARIO_HEIGHT * 0.5f } };
+    return { { m_feet.x, m_feet.y + MARIO_HEIGHT * 0.5f }, { MARIO_WIDTH * 0.5f, MARIO_HEIGHT * 0.5f } };
 }
 
 void Mario::startHammer()
@@ -52,30 +51,30 @@ void Mario::startInvulnerable()
 }
 
 /**
- * @brief Calcola l'onda quadra di lampeggio durante l'invulnerabilità.
+ * @brief Calcola l'onda di lampeggio durante l'invulnerabilità.
  *
- * Usando il resto `fmod(m_invulnTime, 2 * T)` con semi-periodo `T = BLINK_HALF_PERIOD`,
- * alterna intervalli di durata `T` visibili (`< T`) e nascosti (`>= T`).
+ * Usando il resto fmod(m_invulnTime, 2 * T) con semi-periodo T = BLINK_HALF_PERIOD,
+ * alterna intervalli di durata T visibili (< T) e nascosti (>= T).
  */
 bool Mario::blinkVisible() const
 {
     if (!invulnerable()) return true;
+
     const float half = HammerConfig::BLINK_HALF_PERIOD;
     return std::fmod(m_invulnTime, 2.0f * half) < half;
 }
 
 /**
- * @brief Calcola la hitbox del martello davanti a Mario, proiettata nel verso `m_facing`.
+ * @brief Calcola la hitbox del martello davanti a Mario, proiettata nel verso m_facing.
  */
 AABB Mario::hammerBox() const
 {
-    return { { m_feet.x + m_facing * HammerConfig::HIT_OFFSET_X,
-               m_feet.y + HammerConfig::HIT_CENTER_Y },
+    return { { m_feet.x + m_facing * HammerConfig::HIT_OFFSET_X, m_feet.y + HammerConfig::HIT_CENTER_Y },
              { HammerConfig::HIT_HALF_W, HammerConfig::HIT_HALF_H } };
 }
 
 /**
- * @brief Aggiorna i timer con `dt` ed esegue lo stato attivo (`Walking` o `Climbing`).
+ * @brief Aggiorna i timer con dt ed esegue lo stato attivo (Walking o Climbing).
  */
 void Mario::update(float dt, const Controls& controls, const Level& level,
     const std::vector<AABB>& solids)
@@ -83,13 +82,16 @@ void Mario::update(float dt, const Controls& controls, const Level& level,
     m_hammerTime = std::max(0.0f, m_hammerTime - dt);
     m_invulnTime = std::max(0.0f, m_invulnTime - dt);
 
-    if (m_state == MarioState::Walking)
+    if (m_state == MarioState::Walking) {
         tryStartClimb(controls, level);
+    }
 
-    if (m_state == MarioState::Climbing)
+    if (m_state == MarioState::Climbing) {
         climb(dt, controls, level);
-    else
+    }
+    else {
         walk(dt, controls, level, solids);
+    }
 }
 
 /**
@@ -147,7 +149,7 @@ void Mario::climb(float dt, const Controls& controls, const Level& level)
 }
 
 /**
- * @brief Esce dallo stato di arrampicata riportando Mario a terra in stato `Walking`.
+ * @brief Esce dallo stato di arrampicata riportando Mario a terra in stato Walking.
  */
 void Mario::stopClimbing()
 {
@@ -160,15 +162,15 @@ void Mario::stopClimbing()
 /**
  * @brief Integra camminata orizzontale, ostacoli solidi, salto, gravità, soffitto e appoggio su travi.
  *
- * Integrazione verticale in volo (Eulero semi-implicito):
+ * Integrazione verticale in volo:
  *   v_y(t + dt) = v_y(t) + GRAVITY * dt
  *   y(t + dt)   = y(t) + v_y(t + dt) * dt
- * L'oscillazione degli arti segue `m_swing = sin(m_phase)` con `m_phase += WALK_ANIM_SPEED * dt`.
+ * L'oscillazione degli arti segue m_swing = sin(m_phase) con m_phase += WALK_ANIM_SPEED * dt.
  */
 void Mario::walk(float dt, const Controls& controls, const Level& level,
     const std::vector<AABB>& solids)
 {
-    // 1) Movimento orizzontale con clamp ai bordi del campo.
+    // Movimento orizzontale
     const float direction = static_cast<float>(controls.right) - static_cast<float>(controls.left);
     if (direction != 0.0f) m_facing = direction;
 
@@ -176,7 +178,7 @@ void Mario::walk(float dt, const Controls& controls, const Level& level,
     const float limit = FIELD_HALF_WIDTH - MARIO_WIDTH * 0.5f;
     m_feet.x = std::clamp(m_feet.x + direction * MOVE_SPEED * dt, -limit, limit);
 
-    // Risoluzione ostacoli solidi: annulla lo spostamento X in caso di intersezione.
+    // Risoluzione ostacoli solidi
     for (const AABB& solid : solids) {
         if (intersects(box(), solid)) {
             m_feet.x = previousX;
@@ -184,13 +186,13 @@ void Mario::walk(float dt, const Controls& controls, const Level& level,
         }
     }
 
-    // 2) Salto (impulso istantaneo di velocità verticale).
+    // Salto
     if (controls.jump && m_onGround) {
         m_velocityY = JUMP_SPEED;
         m_onGround = false;
     }
 
-    // 3) Movimento verticale: adesione a terra (`WALK_STICK`) o caduta libera con gravità.
+    // Movimento verticale: adesione a terra o caduta libera con gravità
     const float previousY = m_feet.y;
     float stick = 0.0f;
     if (m_onGround) {
@@ -201,7 +203,7 @@ void Mario::walk(float dt, const Controls& controls, const Level& level,
         m_feet.y += m_velocityY * dt;
     }
 
-    // 3b) Collisione con il lato inferiore delle travi in salita.
+    // Collisione con il lato inferiore delle travi in salita
     if (!m_onGround && m_velocityY > 0.0f) {
         float ceilingY = 0.0f;
         if (level.hitsCeiling(m_feet.x, previousY + MARIO_HEIGHT,
@@ -211,7 +213,7 @@ void Mario::walk(float dt, const Controls& controls, const Level& level,
         }
     }
 
-    // 4) Appoggio sulla trave (attivo solo se a terra o in discesa).
+    // Appoggio sulla trave
     const bool canLand = m_onGround || m_velocityY <= 0.0f;
     float groundY = 0.0f;
     if (canLand && level.findGround(m_feet.x, previousY, m_feet.y, stick, groundY)) {
@@ -223,7 +225,7 @@ void Mario::walk(float dt, const Controls& controls, const Level& level,
         m_onGround = false;
     }
 
-    // 5) Fase di animazione degli arti.
+    // 5) Animazione degli arti
     if (m_onGround && direction != 0.0f) {
         m_phase += WALK_ANIM_SPEED * dt;
         m_swing = std::sin(m_phase);

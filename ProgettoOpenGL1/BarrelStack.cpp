@@ -5,17 +5,12 @@
 
 using namespace WorldConfig;
 
-namespace {
-    // Semi-larghezza locale ricavata da barrel.obj (x in [-0.17, +0.18]).
-    constexpr float BARREL_HALF_WIDTH_LOCAL = 0.18f;
-}
-
 /**
- * @brief Carica la mesh Hermite `barrel.obj` una sola volta e crea 4 istanze impilate (2x2).
+ * @brief Carica la mesh Hermite barrel.obj una sola volta e crea 4 istanze impilate (2x2).
  *
  * Calcolo della quota di ciascun barile in coordinate mondo:
  *   y = platform.yAt(x) + (BARREL_BOTTOM_LOCAL * BARREL_SCALE) + row * (BARREL_HEIGHT_LOCAL * BARREL_SCALE)
- * Il termine `BARREL_BOTTOM_LOCAL * BARREL_SCALE` compensa il fatto che la base della mesh
+ * Il termine BARREL_BOTTOM_LOCAL * BARREL_SCALE compensa il fatto che la base della mesh
  * in coordinate locali si trova a y = -0.363 sotto l'origine.
  */
 BarrelStack::BarrelStack(Scene& scene, const Level& level)
@@ -34,8 +29,7 @@ BarrelStack::BarrelStack(Scene& scene, const Level& level)
             m_instances.push_back(instance);
 
             // AABB solida allineata a centro e dimensioni scalate della mesh.
-            m_boxes.push_back({ position,
-                                { BARREL_HALF_WIDTH_LOCAL * BARREL_SCALE, barrelHeight * 0.5f } });
+            m_boxes.push_back({ position, { BARREL_HALF_WIDTH_LOCAL * BARREL_SCALE, barrelHeight * 0.5f } });
         }
     }
 }

@@ -37,7 +37,7 @@ Level::Level(Scene& scene)
 /**
  * @brief Costruisce tutte le scale condividendo una singola Geometry (rettangolo 1x1).
  *
- * Ogni scala è composta da 2 montanti verticali (traslati di +-railOffset) e `rungs` pioli
+ * Ogni scala è composta da 2 montanti verticali (traslati di +-railOffset) e rungs/pioli
  * distribuiti uniformemente tra `yBottom` e `yTop`.
  */
 void Level::buildLadders(Scene& scene)
@@ -52,17 +52,14 @@ void Level::buildLadders(Scene& scene)
 
         for (const float side : { -1.0f, 1.0f }) {
             const std::size_t rail = scene.addInstance(geo);
-            scene.instance(rail).modelMatrix = make(
-                { ladder.x + side * railOffset, midY }, 0.0f,
-                { LADDER_RAIL_WIDTH, height });
+            scene.instance(rail).modelMatrix = make({ ladder.x + side * railOffset, midY }, 0.0f, { LADDER_RAIL_WIDTH, height });
         }
 
         const int rungs = std::max(1, static_cast<int>(height / LADDER_RUNG_SPACING));
         for (int i = 0; i < rungs; ++i) {
             const float y = ladder.yBottom + (static_cast<float>(i) + 0.5f) * height / rungs;
             const std::size_t rung = scene.addInstance(geo);
-            scene.instance(rung).modelMatrix = make(
-                { ladder.x, y }, 0.0f, { LADDER_WIDTH, LADDER_RUNG_THICKNESS });
+            scene.instance(rung).modelMatrix = make({ ladder.x, y }, 0.0f, { LADDER_WIDTH, LADDER_RUNG_THICKNESS });
         }
     }
 }
@@ -72,20 +69,19 @@ void Level::buildLadders(Scene& scene)
  *
  * Costruzione matematica tramite cambio di sistema di riferimento:
  * 1. Vettore direzione della trave: d = p.right - p.left, lunghezza L = ||d||, angolo theta = atan2(d.y, d.x).
- * 2. Matrice del riferimento locale della trave:
- *      girder = T(p.left) * R_z(theta)
+ * 
+ * 2. Matrice del riferimento locale della trave: girder = T(p.left) * R_z(theta)
  *    In questo spazio locale la trave è orizzontale da x = 0 a x = L, con la superficie superiore a y = 0.
- * 3. Ogni cella del traliccio (larghezza `cellWidth`, altezza interna `innerHeight`) contiene due
+ * 
+ * 3. Ogni cella del traliccio (larghezza cellWidth, altezza interna innerHeight) contiene due
  *    diagonali lunghe sqrt((cellWidth/2)^2 + innerHeight^2) inclinate di +-atan2(innerHeight, cellWidth/2).
- * 4. Ogni pezzo (diagonali, barra superiore, barra inferiore) è portato in World Space tramite
- *    la composizione `M_world = girder * M_local`.
+ * 
+ * 4. Ogni pezzo (diagonali, barra superiore, barra inferiore) è portato in World Space tramite la composizione M_world = girder * M_local.
  */
 void Level::buildPlatforms(Scene& scene)
 {
-    const std::size_t bodyGeo = scene.addGeometry(
-        ShapeGenerator::rectangle(1.0f, 1.0f, { 0.86f, 0.20f, 0.42f }));
-    const std::size_t topGeo = scene.addGeometry(
-        ShapeGenerator::rectangle(1.0f, 1.0f, { 0.98f, 0.45f, 0.60f }));
+    const std::size_t bodyGeo = scene.addGeometry(ShapeGenerator::rectangle(1.0f, 1.0f, { 0.86f, 0.20f, 0.42f }));
+    const std::size_t topGeo = scene.addGeometry(ShapeGenerator::rectangle(1.0f, 1.0f, { 0.98f, 0.45f, 0.60f }));
 
     for (const Platform& p : m_platforms) {
         const glm::vec2 d = p.right - p.left;
@@ -114,68 +110,72 @@ void Level::buildPlatforms(Scene& scene)
             const float x0 = static_cast<float>(i) * cellWidth;
 
             const std::size_t up = scene.addInstance(bodyGeo);
-            scene.instance(up).modelMatrix = girder * make(
-                { x0 + 0.5f * halfCell, innerMid }, diagAngle,
+            scene.instance(up).modelMatrix = girder * make({ x0 + 0.5f * halfCell, innerMid }, diagAngle,
                 { diagLength, SPESSORE_DIAGONALI_TRAVI });
 
             const std::size_t down = scene.addInstance(bodyGeo);
-            scene.instance(down).modelMatrix = girder * make(
-                { x0 + 1.5f * halfCell, innerMid }, -diagAngle,
+            scene.instance(down).modelMatrix = girder * make({ x0 + 1.5f * halfCell, innerMid }, -diagAngle,
                 { diagLength, SPESSORE_DIAGONALI_TRAVI });
         }
 
         // Barra superiore (superficie calpestabile).
         const std::size_t top = scene.addInstance(topGeo);
-        scene.instance(top).modelMatrix = girder * make(
-            { 0.5f * length, -0.5f * GIRDER_BAR_THICKNESS }, 0.0f,
+        scene.instance(top).modelMatrix = girder * make({ 0.5f * length, -0.5f * GIRDER_BAR_THICKNESS }, 0.0f,
             { length, GIRDER_BAR_THICKNESS });
 
         // Barra inferiore.
         const std::size_t bottom = scene.addInstance(bodyGeo);
-        scene.instance(bottom).modelMatrix = girder * make(
-            { 0.5f * length, -PLATFORM_THICKNESS + 0.5f * GIRDER_BAR_THICKNESS }, 0.0f,
+        scene.instance(bottom).modelMatrix = girder * make({ 0.5f * length, -PLATFORM_THICKNESS + 0.5f * GIRDER_BAR_THICKNESS }, 0.0f,
             { length, GIRDER_BAR_THICKNESS });
     }
 }
 
 /**
- * @brief Cerca la trave più alta su cui l'entità può appoggiarsi all'ascissa `x`.
+ * @brief Cerca la trave più alta su cui l'entità può appoggiarsi all'ascissa x.
  *
- * Condizioni di appoggio valido rispetto alla quota `y = p.yAt(x)`:
- *   - `previousFeetY >= y - LAND_TOLERANCE` (al frame precedente era sopra o sulla trave)
- *   - `feetY <= y + stick` (al frame corrente l'ha raggiunta o superata; `stick` mantiene l'adesione in discesa)
+ * Condizioni di appoggio valido rispetto alla quota y = p.yAt(x):
+ *   - previousFeetY >= y - LAND_TOLERANCE (al frame precedente era sopra o sulla trave)
+ *   - feetY <= y + stick (al frame corrente l'ha raggiunta o superata; stick mantiene l'adesione in discesa)
  */
-bool Level::findGround(float x, float previousFeetY, float feetY, float stick,
-    float& groundY, int* platformIndex) const
+bool Level::findGround(float x, float previousFeetY, float feetY, float stick, float& groundY, int* platformIndex) const
 {
     bool found = false;
     float best = 0.0f;
     for (std::size_t i = 0; i < m_platforms.size(); ++i) {
         const Platform& p = m_platforms[i];
         if (!p.coversX(x)) continue;
+
         const float y = p.yAt(x);
         const bool wasAbove = previousFeetY >= y - LAND_TOLERANCE;
         const bool nowReached = feetY <= y + stick;
+
         if (wasAbove && nowReached && (!found || y > best)) {
             found = true;
             best = y;
-            if (platformIndex) *platformIndex = static_cast<int>(i);
+
+            if (platformIndex) {
+                *platformIndex = static_cast<int>(i);
+            }
         }
     }
-    if (found) groundY = best;
+    if (found) {
+        groundY = best;
+    }
+
     return found;
 }
 
 /**
  * @brief Verifica se la testa ha attraversato dal basso verso l'alto il lato inferiore di una trave.
  *
- * Lato inferiore della trave: `underside = p.yAt(x) - PLATFORM_THICKNESS`.
+ * Lato inferiore della trave: underside = p.yAt(x) - PLATFORM_THICKNESS.
  */
 bool Level::hitsCeiling(float x, float previousHeadY, float headY, float& ceilingY) const
 {
     for (const Platform& p : m_platforms) {
         if (!p.coversX(x)) continue;
         const float underside = p.yAt(x) - PLATFORM_THICKNESS;
+
         if (previousHeadY <= underside && headY > underside) {
             ceilingY = underside;
             return true;

@@ -6,10 +6,10 @@ using namespace BulletConfig;
 using namespace TransformConfig;
 
 /**
- * @brief Crea una singola Geometry composita (due dischi concentrici concatenati) e 5 istanze.
+ * @brief Crea una singola Geometry composita e 5 istanze.
  *
  * Le matrici Model sono statiche (posizione di riposo + scala uniforme `RADIUS`):
- * l'oscillazione verticale viene applicata dinamicamente nel vertex shader `coin.vert`.
+ * l'oscillazione verticale viene applicata dinamicamente nel vertex shader `bullet.vert`.
  */
 BulletsView::BulletsView(Scene& scene, const Bullets& bullets)
 {
@@ -26,7 +26,7 @@ BulletsView::BulletsView(Scene& scene, const Bullets& bullets)
 }
 
 /**
- * @brief Nasconde nella Scene i pickup già raccolti.
+ * @brief Nasconde nella Scene i proiettili già raccolti.
  */
 void BulletsView::update(Scene& scene, const Bullets& bullets)
 {

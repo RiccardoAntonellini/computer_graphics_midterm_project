@@ -9,22 +9,21 @@
  * @struct Barrel
  * @brief Stato cinematico e logico di un singolo barile rotolante.
  *
- * Il punto di riferimento spaziale scelto è `feet` (il punto di contatto inferiore del disco),
+ * Il punto di riferimento spaziale scelto è feet (il punto di contatto inferiore del disco),
  * che semplifica il vincolo di appoggio sulle piattaforme del livello.
  */
 struct Barrel {
-    bool active = false;      ///< Indica se il barile è attualmente in gioco (object pooling).
-    glm::vec2 feet{ 0.0f };   ///< Coordinate mondo (x, y) del punto più basso del disco.
-    float velocityY = 0.0f;   ///< Componente verticale della velocità (per gravità/caduta).
-    float direction = 1.0f;   ///< Verso del moto orizzontale: +1.0f (destra), -1.0f (sinistra).
-    bool onGround = true;     ///< True se il barile è attualmente appoggiato su una piattaforma.
-    float angle = 0.0f;       ///< Angolo di rotazione (in radianti) accumulato dal rotolamento, usato per la Model Matrix.
+    bool active = false;// Indica se il barile è attualmente in gioco (object pooling).
+    glm::vec2 feet{ 0.0f };// Coordinate mondo (x, y) del punto più basso del disco.
+    float velocityY = 0.0f;// Componente verticale della velocità (per gravità/caduta).
+    float direction = 1.0f;// Verso del moto orizzontale: +1.0f (destra), -1.0f (sinistra).
+    bool onGround = true;// True se il barile è attualmente appoggiato su una piattaforma.
+    float angle = 0.0f;// Angolo di rotazione (in radianti) accumulato dal rotolamento, usato per la Model Matrix.
 
     /**
-     * @brief Calcola il centro geometrico del barile a partire dal punto d'appoggio `feet`.
+     * @brief Calcola il centro geometrico del barile a partire dal punto d'appoggio feet.
      *
-     * Applica una traslazione verticale pura lungo l'asse Y:
-     * \f$ C = (x_{\text{feet}}, \; y_{\text{feet}} + R) \f$, dove \f$ R \f$ è `BarrelConfig::RADIUS`.
+     * Applica una traslazione verticale pura lungo l'asse Y.
      *
      * @return glm::vec2 Coordinate mondo del centro del disco.
      */

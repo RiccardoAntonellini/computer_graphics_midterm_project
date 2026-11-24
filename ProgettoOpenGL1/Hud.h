@@ -26,8 +26,8 @@ public:
     Hud& operator=(const Hud&) = delete;
 
     /**
-     * @brief Disegna l'HUD per il frame corrente a partire dallo snapshot `info`.
-     * @param info Dati di gioco correnti forniti da `Game::hudInfo()`.
+     * @brief Disegna l'HUD per il frame corrente a partire dallo snapshot info.
+     * @param info Dati di gioco correnti forniti da Game::hudInfo().
      */
     void draw(const HudInfo& info);
 };

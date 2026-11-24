@@ -13,9 +13,9 @@ enum class MarioState { Walking, Climbing };
 
 /**
  * @class Mario
- * @brief Logica cinematica e stato del giocatore (completamente disaccoppiata dal rendering).
+ * @brief Logica cinematica e stato del giocatore completamente disaccoppiata dal rendering.
  *
- * Il punto di riferimento spaziale `m_feet` rappresenta il centro orizzontale della base
+ * Il punto di riferimento spaziale m_feet rappresenta il centro orizzontale della base
  * (i piedi): questo semplifica sia il vincolo di appoggio sulle travi inclinate sia la
  * costruzione della Model Matrix del Rig in `MarioView`.
  */
@@ -44,8 +44,11 @@ public:
         const std::vector<AABB>& solids);
 
     const glm::vec2& feet() const { return m_feet; }
-    float facing() const { return m_facing; }                   ///< Direzione di sguardo: +1 destra, -1 sinistra.
-    float swing() const { return m_swing; }                     ///< Oscillazione normalizzata degli arti in [-1, 1].
+
+    float facing() const { return m_facing; }// Direzione di sguardo: +1 destra, -1 sinistra.
+
+    float swing() const { return m_swing; }// Oscillazione normalizzata degli arti in [-1, 1].
+
     bool climbing() const { return m_state == MarioState::Climbing; }
 
     /**
@@ -54,22 +57,20 @@ public:
      */
     AABB box() const;
 
-    // --- Power-up Martello ---
-
     /**
-     * @brief Attiva il power-up del martello impostando il timer a `HAMMER_DURATION`.
+     * @brief Attiva il power-up del martello impostando il timer a HAMMER_DURATION.
      */
     void startHammer();
+
     bool hammering() const { return m_hammerTime > 0.0f; }
+
     float hammerTimeLeft() const { return m_hammerTime; }
 
     /**
-     * @brief Restituisce la hitbox offensiva del martello davanti a Mario (nel verso `m_facing`).
+     * @brief Restituisce la hitbox offensiva del martello davanti a Mario (nel verso m_facing).
      * @return AABB Area entro cui i barili rotolanti vengono distrutti.
      */
     AABB hammerBox() const;
-
-    // --- Invulnerabilità post-danno ---
 
     /**
      * @brief Attiva la finestra temporanea di invulnerabilità con lampeggio.
@@ -88,16 +89,15 @@ private:
     float m_velocityY = 0.0f;
     bool m_onGround = true;
     MarioState m_state = MarioState::Walking;
-    int m_ladder = -1;          ///< Indice della scala attualmente in uso (-1 se nessuna).
-    float m_facing = 1.0f;      ///< +1.0f destra, -1.0f sinistra.
-    float m_phase = 0.0f;       ///< Fase accumulata (rad) per l'oscillazione sinusoidale degli arti.
-    float m_swing = 0.0f;       ///< Valore sin(m_phase) in [-1, 1] esposto alla View.
-    float m_hammerTime = 0.0f;  ///< Secondi residui del power-up martello.
-    float m_invulnTime = 0.0f;  ///< Secondi residui di invulnerabilità.
+    int m_ladder = -1;// Indice della scala attualmente in uso (-1 se nessuna).
+    float m_facing = 1.0f;// +1.0f destra, -1.0f sinistra.
+    float m_phase = 0.0f;// Fase accumulata (rad) per l'oscillazione sinusoidale degli arti.
+    float m_swing = 0.0f;// Valore sin(m_phase) in [-1, 1] esposto alla View.
+    float m_hammerTime = 0.0f;// Secondi residui del power-up martello.
+    float m_invulnTime = 0.0f;// Secondi residui di invulnerabilità.
 
     void tryStartClimb(const Controls& controls, const Level& level);
     void climb(float dt, const Controls& controls, const Level& level);
-    void walk(float dt, const Controls& controls, const Level& level,
-        const std::vector<AABB>& solids);
+    void walk(float dt, const Controls& controls, const Level& level, const std::vector<AABB>& solids);
     void stopClimbing();
 };

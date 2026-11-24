@@ -6,7 +6,7 @@
  * @namespace ShapeGenerator
  * @brief Generatori procedurali di primitive geometriche 2D centrate nell'origine locale (0, 0).
  *
- * Tutte le funzioni restituiscono una `MeshData` triangolata (`GL_TRIANGLES`) con colore uniforme.
+ * Tutte le funzioni restituiscono una MeshData triangolata (GL_TRIANGLES) con colore uniforme.
  */
 namespace ShapeGenerator {
 

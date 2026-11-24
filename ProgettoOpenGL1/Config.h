@@ -48,6 +48,8 @@ namespace WorldConfig {
 	constexpr float BARREL_SCALE = 16.0f;
 	constexpr float BARREL_BOTTOM_LOCAL = 0.363f;
 	constexpr float BARREL_HEIGHT_LOCAL = 0.738f;
+	// Semi-larghezza locale ricavata da barrel.obj (x in [-0.17, +0.18]).
+	constexpr float BARREL_HALF_WIDTH_LOCAL = 0.18f;
 }
 
 /**
@@ -175,6 +177,11 @@ namespace BarrelConfig {
 	constexpr float STICK = 1.0f;       ///< Tolleranza di adesione alla trave in discesa.
 	constexpr float SPAWN_X = -24.0f;   ///< Coordinata X di rilascio davanti alle mani di DK.
 	constexpr float HITBOX_HALF = 3.0f; ///< Semi-lato AABB (< RADIUS per collisioni leggermente permissive).
+
+	//Palette e proporzioni View (origine locale al centro del barile)
+	const glm::vec3 BODY_COLOR(0.90f, 0.50f, 0.10f);
+	const glm::vec3 STRIPE_COLOR(0.45f, 0.20f, 0.05f);
+	constexpr float HALF_PI = 1.5707963f;
 }
 
 /**

@@ -8,7 +8,7 @@ using namespace WorldConfig;
  * @brief Inizializza GLFW, crea la finestra OpenGL 3.3 Core, attiva V-Sync e carica GLAD.
  *
  * Blocca l'aspect ratio della finestra sulle proporzioni esatte del mondo di gioco
- * (`2 * FIELD_HALF_WIDTH` : `2 * HALF_HEIGHT`) in modo che la proiezione ortografica
+ * (2 * FIELD_HALF_WIDTH : 2 * HALF_HEIGHT) in modo che la proiezione ortografica
  * non introduca deformazioni durante il ridimensionamento.
  */
 WindowUtils::WindowUtils(int width, int height, const char* title)
@@ -25,7 +25,7 @@ WindowUtils::WindowUtils(int width, int height, const char* title)
         throw std::runtime_error("Errore creazione finestra");
     }
     glfwMakeContextCurrent(m_window);
-    glfwSwapInterval(1); // V-Sync attivo
+    glfwSwapInterval(1);// V-Sync attivo
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         glfwDestroyWindow(m_window);

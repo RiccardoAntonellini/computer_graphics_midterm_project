@@ -6,7 +6,7 @@
 
 /**
  * @class BulletRenderer
- * @brief Renderer specializzato per disegnare istanze animate tramite lo shader `bullet.vert`.
+ * @brief Renderer specializzato per disegnare istanze animate tramite lo shader bullet.vert.
  *
  * Non possiede né geometrie né istanze (che restano di proprietà della Scene): si limita
  * ad attivare il proprio shader program, impostare le uniform necessarie (projection,
@@ -15,7 +15,7 @@
 class BulletRenderer {
 public:
     /**
-     * @brief Costruisce il renderer associandolo allo shader dedicato ai pickup.
+     * @brief Costruisce il renderer associandolo allo shader dedicato ai proiettili.
      * @param shader Riferimento allo shader program animato (deve restare valido per tutta la vita del renderer).
      */
     explicit BulletRenderer(const Shader& shader) : m_shader(shader) {}

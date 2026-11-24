@@ -6,8 +6,8 @@
  * @class WindowUtils
  * @brief Wrapper RAII per la finestra GLFW, il contesto OpenGL 3.3 Core e l'inizializzazione di GLAD.
  *
- * @note Va dichiarata PRIMA di qualsiasi oggetto che possiede risorse OpenGL (`Shader`, `Scene`,
- *       `BackgroundRenderer`, ecc.): in questo modo, grazie all'ordine inverso di distruzione in C++,
+ * @note Va dichiarata PRIMA di qualsiasi oggetto che possiede risorse OpenGL (Shader, Scene,
+ *       BackgroundRenderer, ecc): in questo modo, grazie all'ordine inverso di distruzione in C++,
  *       il contesto OpenGL viene distrutto per ultimo dopo che tutti i VAO/VBO/shader sono già stati liberati.
  */
 class WindowUtils {
@@ -22,7 +22,7 @@ public:
     WindowUtils(int width, int height, const char* title);
 
     /**
-     * @brief Distrugge la finestra GLFW e termina la libreria (`glfwTerminate`).
+     * @brief Distrugge la finestra GLFW e termina la libreria.
      */
     ~WindowUtils();
 

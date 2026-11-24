@@ -22,7 +22,7 @@ Hud::Hud(GLFWwindow* window)
     ImGui::StyleColorsDark();
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 330");
-	ImGui::GetIO().IniFilename = nullptr; // Disabilita il salvataggio della configurazione su file.
+	ImGui::GetIO().IniFilename = nullptr;
 }
 
 /**
@@ -46,12 +46,12 @@ void Hud::draw(const HudInfo& info)
 
     const ImVec2 screen = ImGui::GetIO().DisplaySize;
 
-    // Pannello in alto a destra (pivot = (1, 0)): lascia libera la zona sinistra di DK.
     ImGui::SetNextWindowPos(ImVec2(screen.x - 10.0f, 10.0f), ImGuiCond_Always, ImVec2(1.0f, 0.0f));
     ImGui::Begin("Stato", nullptr, OVERLAY_FLAGS);
 
-    if (info.showTimer && info.outcome == Outcome::Playing)
+    if (info.showTimer && info.outcome == Outcome::Playing) {
         ImGui::Text("Tempo: %d", static_cast<int>(std::ceil(info.timeLeft)));
+    }
 
     ImGui::Text("Vite: %d", info.lives);
     ImGui::Text("Proiettili: %d/%d", info.bullets, info.bulletTotal);
@@ -59,13 +59,13 @@ void Hud::draw(const HudInfo& info)
         ImGui::Text("Munizioni (F): %d", info.ammo);
         ImGui::Text("Colpi a Kong: %d", info.kongLife);
     }
+
     if (info.hammerFraction > 0.0f) {
         ImGui::Text("Martello");
         ImGui::ProgressBar(info.hammerFraction, ImVec2(120.0f, 0.0f), "");
     }
     ImGui::End();
 
-    // Banner centrale di vittoria o sconfitta (pivot = (0.5, 0.5)).
     if (info.outcome != Outcome::Playing) {
         ImGui::SetNextWindowPos(ImVec2(screen.x * 0.5f, screen.y * 0.5f), ImGuiCond_Always, ImVec2(0.5f, 0.5f));
         ImGui::Begin("Esito", nullptr, OVERLAY_FLAGS);

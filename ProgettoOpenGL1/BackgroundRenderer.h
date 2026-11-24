@@ -17,7 +17,7 @@ public:
     /**
      * @brief Costruisce il renderer allocando VAO e VBO per il quad full-screen in NDC.
      * @param shader Riferimento allo shader program dedicato allo sfondo (deve restare valido
-     *               per l'intera durata di vita dell'istanza).
+     * per l'intera durata di vita dell'istanza).
      */
     explicit BackgroundRenderer(const Shader& shader);
 

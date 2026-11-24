@@ -20,20 +20,19 @@ using namespace WorldConfig;
  * @brief Entry point dell'applicazione: inizializza OpenGL, shader, scena e avvia il game loop.
  *
  * Architettura di rendering (3 programmi shader distinti per frame):
- *   1. `background`: shader procedurale full-screen in NDC (`background.vert/frag`).
- *   2. `renderer`: shader standard degli oggetti (`basic.vert/frag`) con proiezione ortografica,
- *      escludendo la Geometry dei bullets.
- *   3. `BulletRenderer`: shader animato dei bullets (`bullet.vert` + `basic.frag`).
- *   4. `hud`: overlay Dear ImGui.
+ *   1. background: shader procedurale full-screen in NDC (background.vert/frag).
+ *   2. renderer: shader standard degli oggetti (basic.vert/frag) con proiezione ortografica, escludendo la Geometry dei bullets.
+ *   3. BulletRenderer`: shader animato dei bullets (bullet.vert + basic.frag).
+ *   4. hud: overlay Dear ImGui.
  *
- * Gestione del tempo: `dt = clamp(now - previousTime, 0.0, 0.03)` garantisce moto indipendente
+ * Gestione del tempo: dt = clamp(now - previousTime, 0.0, 0.03) garantisce moto indipendente
  * dal frame rate ed evita salti fisici (tunneling) in caso di lag o spostamento della finestra.
  */
 int main()
 {
     try {
         // L'ordine di dichiarazione è inverso a quello di distruzione (RAII):
-        // `window` (contesto OpenGL) viene distrutto per ultimo.
+        // window viene distrutto per ultimo.
         WindowUtils window(610, 700, "Donkey Kong");
         Hud hud(window.handle());
 

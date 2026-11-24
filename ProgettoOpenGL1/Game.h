@@ -24,9 +24,9 @@
  * @class Game
  * @brief Orchestratore centrale della partita: coordina logica, collisioni, regole e viste.
  *
- * Non possiede la `Scene` (la riceve per riferimento).
+ * Non possiede la Scene (la riceve per riferimento).
  * @note L'ordine di dichiarazione dei membri privati determina l'ordine di costruzione e,
- *       di conseguenza, l'ordine di registrazione e disegno nella `Scene` (painter's algorithm 2D).
+ *       di conseguenza, l'ordine di registrazione e disegno nella Scene.
  */
 class Game {
 public:
@@ -63,7 +63,7 @@ public:
     std::size_t bulletGeometry() const { return m_bulletsView.geometryIndex(); }
 
     /**
-     * @brief Restituisce gli indici delle istanze dei pickup da passare a `CoinRenderer`.
+     * @brief Restituisce gli indici delle istanze dei pickup da passare a BulletRenderer.
      * @return const std::vector<std::size_t>& Indici delle istanze nella Scene.
      */
     const std::vector<std::size_t>& bulletInstances() const { return m_bulletsView.instances(); }
@@ -71,7 +71,7 @@ public:
 private:
     Scene& m_scene;
     Level m_level;
-    BarrelStack m_barrelStack;     ///< Barili statici accanto a DK (ostacoli solidi).
+    BarrelStack m_barrelStack;// Barili statici accanto a DK (ostacoli solidi).
     Hammer m_hammer;
     DonkeyKong m_kong;
     DonkeyKongView m_kongView;
@@ -79,8 +79,8 @@ private:
     PaulineView m_paulineView;
     Bullets m_bullets;
     BulletsView m_bulletsView;
-    Barrels m_barrels;             ///< Logica dei barili rotolanti.
-    BarrelsView m_barrelsView;     ///< Grafica dei barili rotolanti.
+    Barrels m_barrels;// Logica dei barili rotolanti.
+    BarrelsView m_barrelsView;// Grafica dei barili rotolanti.
     Mario m_mario;
     MarioView m_marioView;
     Shots m_shots;
@@ -98,8 +98,8 @@ private:
     void tryFire();
     bool marioOnTop() const;
     void loseLife();
-    void hitByKong();                           ///< Contatto con DK: toglie una vita senza resettare il livello.
-    void setLastLife();                         ///< Funzione di debug (tasto P): imposta le vite a 1.
-    std::vector<AABB> solidObstacles() const;   ///< Restituisce tutte le AABB solide non attraversabili da Mario.
-    bool marioTouchesKong() const;              ///< Verifica il contatto tra Mario e DK ancora attivo.
+    void hitByKong();// Contatto con DK: toglie una vita senza resettare il livello.
+    void setLastLife();// Funzione di debug (tasto P): imposta le vite a 1.
+    std::vector<AABB> solidObstacles() const;// Restituisce tutte le AABB solide non attraversabili da Mario.
+    bool marioTouchesKong() const;// Verifica il contatto tra Mario e DK ancora attivo.
 };

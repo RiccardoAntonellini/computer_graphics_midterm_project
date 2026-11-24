@@ -9,7 +9,7 @@
  * @brief Gestisce la pila statica di barili accanto a Donkey Kong.
  *
  * Dimostra il riutilizzo geometrico tramite istanziazione: una singola Geometry condivisa
- * viene istanziata quattro volte nella Scene con matrici di trasformazione (Model Matrix)
+ * viene istanziata quattro volte nella Scene con matrici di trasformazione
  * indipendenti. Funge anche da ostacolo solido esponendo le AABB di ciascun barile.
  */
 class BarrelStack {
@@ -28,6 +28,6 @@ public:
     const std::vector<AABB>& boxes() const { return m_boxes; }
 
 private:
-    std::vector<std::size_t> m_instances; ///< Indici delle 4 istanze registrate nella Scene.
-    std::vector<AABB> m_boxes;            ///< Bounding box statiche in coordinate mondo.
+    std::vector<std::size_t> m_instances;// Indici delle 4 istanze registrate nella Scene.
+    std::vector<AABB> m_boxes;// Bounding box statiche in coordinate mondo.
 };

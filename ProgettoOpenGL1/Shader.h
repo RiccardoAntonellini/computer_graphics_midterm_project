@@ -7,8 +7,8 @@
  * @class Shader
  * @brief Wrapper RAII per un programma shader OpenGL (vertex + fragment shader GLSL).
  *
- * Compila, linka e gestisce il ciclo di vita di `m_program`, offrendo metodi tipizzati
- * per attivare il programma (`glUseProgram`) e impostare variabili uniform.
+ * Compila, linka e gestisce il ciclo di vita di m_program, offrendo metodi tipizzati
+ * per attivare il programma (glUseProgram) e impostare variabili uniform.
  */
 class Shader {
 public:
@@ -21,7 +21,7 @@ public:
     Shader(const std::string& vertexSource, const std::string& fragmentSource);
 
     /**
-     * @brief Rilascia il programma shader dalla GPU (`glDeleteProgram`).
+     * @brief Rilascia il programma shader dalla GPU (glDeleteProgram).
      */
     ~Shader();
 
@@ -29,19 +29,19 @@ public:
     Shader& operator=(const Shader&) = delete;
 
     /**
-     * @brief Attiva questo programma shader nella pipeline OpenGL corrente (`glUseProgram`).
+     * @brief Attiva questo programma shader nella pipeline OpenGL corrente (glUseProgram).
      */
     void use() const;
 
     /**
-     * @brief Imposta una uniform di tipo `mat4` (es. `uProjection`, `uModel`).
+     * @brief Imposta una uniform di tipo mat4 (es. uProjection, uModel).
      * @param uniformName Nome della variabile uniform nello shader GLSL.
      * @param value Matrice 4x4 da caricare in GPU.
      */
     void setMat4(const char* uniformName, const glm::mat4& value) const;
 
     /**
-     * @brief Imposta una uniform di tipo `float` (es. `uTime`).
+     * @brief Imposta una uniform di tipo float (es. uTime).
      * @param uniformName Nome della variabile uniform nello shader GLSL.
      * @param value Valore scalare da caricare in GPU.
      */

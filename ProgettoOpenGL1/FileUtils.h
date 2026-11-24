@@ -11,7 +11,7 @@
 namespace FileUtils {
 
     /**
-     * @brief Legge l'intero contenuto di un file di testo in una `std::string`.
+     * @brief Legge l'intero contenuto di un file di testo in una std::string.
      * @param path Percorso del file da aprire.
      * @return std::string Contenuto completo del file.
      * @throws std::runtime_error Se il file non esiste o non può essere aperto.

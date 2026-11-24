@@ -14,7 +14,7 @@ class DonkeyKong {
 public:
     /**
      * @brief Inizializza Donkey Kong posizionandolo sulla piattaforma designata del livello.
-     * @param level Livello corrente da cui ricavare l'altezza della piattaforma `DK_PLATFORM`.
+     * @param level Livello corrente da cui ricavare l'altezza della piattaforma DK_PLATFORM.
      */
     explicit DonkeyKong(const Level& level);
 
@@ -31,7 +31,7 @@ public:
     /**
      * @brief Avanza i timer di animazione e di lancio in modo indipendente dal frame rate.
      * @param dt Delta time in secondi trascorso dall'ultimo frame.
-     * @return true nel singolo frame in cui DK raggiunge `RELEASE_TIME` e rilascia un barile.
+     * @return true nel singolo frame in cui DK raggiunge RELEASE_TIME e rilascia un barile.
      */
     bool update(float dt);
 
@@ -48,14 +48,14 @@ public:
     int hits() const { return m_hits; }
 
     /**
-     * @brief Verifica se Donkey Kong è stato sconfitto (`m_hits >= MAX_HITS`).
+     * @brief Verifica se Donkey Kong è stato sconfitto (m_hits >= MAX_HITS).
      * @return true se sconfitto, false altrimenti.
      */
     bool defeated() const { return m_hits >= DonkeyKongConfig::MAX_HITS; }
 
     /**
      * @brief Calcola la bounding box di collisione di Donkey Kong in coordinate mondo.
-     * @return AABB Rettangolo di collisione centrato sopra `m_feet`.
+     * @return AABB Rettangolo di collisione centrato sopra m_feet.
      */
     AABB box() const;
 
@@ -67,21 +67,21 @@ public:
 
     /**
      * @brief Restituisce il valore normalizzato dell'oscillazione delle braccia a riposo.
-     * @return float Valore sinusoidale in [-1, 1] calcolato in funzione di `m_time`.
+     * @return float Valore sinusoidale in [-1, 1] calcolato in funzione di m_time.
      */
     float beat() const;
 
     /**
      * @brief Restituisce l'avanzamento normalizzato del gesto di lancio.
-     * @return float 0.0f se non sta lanciando, altrimenti valore in [0, 1] pari a `m_throwTime / THROW_DURATION`.
+     * @return float 0.0f se non sta lanciando, altrimenti valore in [0, 1] pari a m_throwTime / THROW_DURATION.
      */
     float throwProgress() const;
 
 private:
-    glm::vec2 m_feet{ 0.0f }; ///< Coordinate mondo del punto di appoggio.
-    float m_time = 0.0f;      ///< Tempo accumulato per l'oscillazione periodica a riposo.
-    float m_wait = 0.0f;      ///< Timer trascorso dall'ultimo lancio.
-    float m_throwTime = 0.0f; ///< Timer interno al gesto di lancio corrente.
-    bool m_throwing = false;  ///< True durante l'esecuzione del gesto di lancio.
-    int m_hits = 0;           ///< Numero di colpi subiti.
+    glm::vec2 m_feet{ 0.0f };// Coordinate mondo del punto di appoggio.
+    float m_time = 0.0f;// Tempo accumulato per l'oscillazione periodica a riposo.
+    float m_wait = 0.0f;// Timer trascorso dall'ultimo lancio.
+    float m_throwTime = 0.0f;// Timer interno al gesto di lancio corrente.
+    bool m_throwing = false;// True durante l'esecuzione del gesto di lancio.
+    int m_hits = 0;// Numero di colpi subiti.
 };

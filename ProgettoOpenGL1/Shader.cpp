@@ -6,7 +6,7 @@
 namespace {
     /**
      * @brief Compila un singolo stadio shader GLSL (vertex o fragment) e verifica gli errori.
-     * @throws std::runtime_error Se la compilazione fallisce (stampa l'info log su `std::cerr`).
+     * @throws std::runtime_error Se la compilazione fallisce (stampa l'info log su std::cerr).
      */
     GLuint compileShader(GLenum kind, const std::string& src)
     {
@@ -72,7 +72,7 @@ void Shader::use() const
 }
 
 /**
- * @brief Carica una matrice 4x4 nella uniform `name` (column-major, senza trasposizione).
+ * @brief Carica una matrice 4x4 nella uniform name.
  */
 void Shader::setMat4(const char* name, const glm::mat4& value) const
 {
@@ -80,7 +80,7 @@ void Shader::setMat4(const char* name, const glm::mat4& value) const
 }
 
 /**
- * @brief Carica uno scalare float nella uniform `name`.
+ * @brief Carica uno scalare float nella uniform name.
  */
 void Shader::setFloat(const char* name, float value) const
 {

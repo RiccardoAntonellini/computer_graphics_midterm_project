@@ -37,9 +37,9 @@ private:
      * @brief Raggruppa gli indici delle tre istanze nella Scene che compongono un singolo barile.
      */
     struct Slot {
-        std::size_t body = 0;    ///< Indice dell'istanza del disco principale.
-        std::size_t stripeA = 0; ///< Indice dell'istanza della prima striscia (ruota con il barile).
-        std::size_t stripeB = 0; ///< Indice dell'istanza della seconda striscia (ortogonale alla prima).
+        std::size_t body = 0;    // Indice dell'istanza del disco principale.
+        std::size_t stripeA = 0; // Indice dell'istanza della prima striscia (ruota con il barile).
+        std::size_t stripeB = 0; // Indice dell'istanza della seconda striscia (ortogonale alla prima).
     };
 
     std::vector<Slot> m_slots;

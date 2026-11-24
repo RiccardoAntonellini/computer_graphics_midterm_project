@@ -77,7 +77,7 @@ cartelle "assets/" e "shaders/" (oppure copiarle accanto al file .exe).
     - hammer.obj / .mtl        : Mesh 2D (curve di Hermite) del martello
 
   shaders/
-    - background.vert / .frag  : Shader procedurale dedicato allo sfondo CRT
+    - background.vert / .frag  : Shader procedurale dedicato allo sfondo
     - basic.vert / .frag       : Shader standard per gli oggetti della scena
     - bullet.vert              : Vertex shader dedicato all'oscillazione dei
                                  5 proiettili raccoglibili
@@ -86,7 +86,7 @@ cartelle "assets/" e "shaders/" (oppure copiarle accanto al file .exe).
     - Geometrie e Scena        : MeshData, ShapeGenerator, ObjLoader, Geometry,
                                  Scene, Rig, TransformConfig
     - Rendering e Shader       : Shader, Renderer, BackgroundRenderer,
-                                 CoinRenderer, WindowUtils, Hud
+                                 BulletRenderer, WindowUtils, Hud
     - Logica di gioco          : Level, Mario, DonkeyKong, Pauline, Barrels,
                                  Bullets, Shots, Hammer, Collision, Game
     - Viste grafiche           : MarioView, DonkeyKongView, PaulineView,

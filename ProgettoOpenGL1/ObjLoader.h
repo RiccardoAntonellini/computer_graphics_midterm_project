@@ -12,7 +12,7 @@
  * @namespace ObjLoader
  * @brief Parser leggero di file Wavefront OBJ/MTL 2D (es. mesh esportate dal modellatore Hermite).
  *
- * Produce `MeshData` non indicizzati con layout interleaved (x, y, r, g, b) e primitiva `GL_TRIANGLES`.
+ * Produce MeshData non indicizzati con layout interleaved (x, y, r, g, b) e primitiva GL_TRIANGLES.
  */
 namespace ObjLoader {
 
@@ -27,8 +27,8 @@ namespace ObjLoader {
     }
 
     /**
-     * @brief Legge un file materiali MTL estraendo colore diffuso (`Kd`) e opacità (`d`).
-     * @param filename Percorso del file `.mtl`.
+     * @brief Legge un file materiali MTL estraendo colore diffuso (Kd) e opacità (d).
+     * @param filename Percorso del file .mtl.
      * @param[out] materials Mappa nome_materiale -> colore RGBA.
      * @return true se il file è stato aperto e letto, false altrimenti.
      */
@@ -58,18 +58,7 @@ namespace ObjLoader {
 
     /**
      * @brief Carica una mesh 2D da file OBJ (con eventuali materiali MTL) in una `MeshData`.
-     *
-     * Gestione geometrica delle facce (`f`):
-     * 1. **Triangolazione a ventaglio (Fan Triangulation):** una faccia poligonale con N vertici
-     *    (v0, v1, ..., v_{N-1}) viene scomposta in N - 2 triangoli: (v0, v_k, v_{k+1}) per k = 1..N-2.
-     * 2. **Scarto dei triangoli degeneri:** per ogni triangolo (a, b, c) calcola la componente Z
-     *    del prodotto vettoriale 2D:
-     *      cross = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
-     *    Geometricamente |cross| = 2 * Area(a, b, c). Se |cross| < 1e-10 i tre vertici sono
-     *    praticamente collineari (area nulla) e il triangolo viene scartato.
-     *
      * @note Le coordinate vengono mantenute esattamente come nel file OBJ (nessuna centratura o scala automatica).
-     *
      * @param filename Percorso del file `.obj`.
      * @param[out] mesh Struttura `MeshData` popolata in caso di successo.
      * @param[out] error Messaggio descrittivo in caso di errore.

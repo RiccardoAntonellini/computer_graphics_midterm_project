@@ -9,26 +9,26 @@
  * @struct GeometryInstance
  * @brief Stato di una singola istanza renderizzabile nella Scene.
  *
- * Non duplica i vertici in memoria: conserva solo l'indice della `Geometry` condivisa,
- * la propria matrice di trasformazione `modelMatrix` (spazio locale -> spazio mondo)
+ * Non duplica i vertici in memoria: conserva solo l'indice della Geometry condivisa,
+ * la propria matrice di trasformazione modelMatrix (spazio locale -> spazio mondo)
  * e il flag di visibilità.
  */
 struct GeometryInstance {
-    std::size_t geometryIndex = 0; ///< Indice della Geometry condivisa in `Scene`.
-    glm::mat4 modelMatrix{ 1.0f }; ///< Matrice di modello 4x4 in coordinate omogenee.
-    bool visible = true;           ///< Se false, l'istanza viene saltata dal renderer.
+    std::size_t geometryIndex = 0; // Indice della Geometry condivisa in `Scene`.
+    glm::mat4 modelMatrix{ 1.0f }; // Matrice di modello 4x4 in coordinate omogenee.
+    bool visible = true;           // Se false, l'istanza viene saltata dal renderer.
 };
 
 /**
  * @class Scene
- * @brief Contenitore centrale che separa i dati geometrici condivisi (`Geometry`) dalle istanze (`GeometryInstance`).
+ * @brief Contenitore centrale che separa i dati geometrici condivisi (Geometry) dalle istanze (GeometryInstance).
  *
- * Le istanze vengono disegnate nell'ordine di inserimento (painter's algorithm 2D).
+ * Le istanze vengono disegnate nell'ordine di inserimento.
  */
 class Scene {
 public:
     /**
-     * @brief Carica una nuova mesh in GPU creando una `Geometry` e ne restituisce l'indice.
+     * @brief Carica una nuova mesh in GPU creando una Geometry e ne restituisce l'indice.
      * @param mesh Dati geometrici lato CPU.
      * @return std::size_t Indice univoco della Geometry registrata.
      */

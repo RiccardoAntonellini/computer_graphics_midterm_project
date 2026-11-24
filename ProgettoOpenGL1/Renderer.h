@@ -35,8 +35,8 @@ public:
     /**
      * @brief Disegna tutte le istanze visibili della scena, escludendo opzionalmente una Geometry.
      *
-     * Il parametro `excludedGeometryIndex` permette di saltare le istanze renderizzate da
-     * uno shader dedicato (es. i pickup disegnati da `CoinRenderer`).
+     * Il parametro excludedGeometryIndex permette di saltare le istanze renderizzate da
+     * uno shader dedicato (es. i proiettili disegnati da BulletRenderer).
      *
      * @param scene Scena contenente geometrie e istanze.
      * @param excludedGeometryIndex Indice della Geometry da saltare (default: nessuna esclusione).

@@ -9,11 +9,9 @@ using namespace HammerConfig;
 using namespace TransformConfig;
 
 /**
- * @brief Carica la mesh Hermite `hammer.obj`, crea la sua istanza e la nasconde fino all'ultima vita.
+ * @brief Carica la mesh Hermite hammer.obj, crea la sua istanza e la nasconde fino all'ultima vita.
  */
-Hammer::Hammer(Scene& scene, const Level& level)
-    : m_rng(std::random_device{}())
-{
+Hammer::Hammer(Scene& scene, const Level& level) : m_rng(std::random_device{}()) {
     const std::size_t geometry = scene.addGeometry(AssetsUtils::loadMesh("hammer.obj"));
     m_instance = scene.addInstance(geometry);
     respawn(level);
@@ -21,51 +19,47 @@ Hammer::Hammer(Scene& scene, const Level& level)
 }
 
 /**
- * @brief Sceglie una posizione casuale valida su una trave intermedia, lontana dai bordi e dalle scale.
- *
- * - Selezione trave: intero uniforme in [FIRST_HAMMER_PLATFORM, LAST_HAMMER_PLATFORM].
- * - Selezione ascissa x: normalizzazione lineare di `m_rng()` in [0, 1] mappata su [minX, maxX].
- * - Rejection sampling (fino a 50 tentativi) per evitare la sovrapposizione con le scale.
- * - Quota y: `platform.yAt(x) + HAMMER_BOTTOM_LOCAL * HAMMER_SCALE` per appoggiare l'impugnatura sulla trave.
+ * @brief Posiziona il martello in un punto casuale di una trave intermedia, lontano da bordi e scale.
  */
 void Hammer::respawn(const Level& level)
 {
-    const int range = LAST_HAMMER_PLATFORM - FIRST_HAMMER_PLATFORM + 1;
-    const int platformIndex = FIRST_HAMMER_PLATFORM + static_cast<int>(m_rng() % range);
+    // Scelgo a caso una delle travi intermedie.
+    const int numPlatforms = LAST_HAMMER_PLATFORM - FIRST_HAMMER_PLATFORM + 1;
+    const int platformIndex = FIRST_HAMMER_PLATFORM + static_cast<int>(m_rng() % numPlatforms);
     const Platform& platform = level.platforms()[platformIndex];
 
     const float minX = platform.left.x + HAMMER_EDGE_MARGIN;
     const float maxX = platform.right.x - HAMMER_EDGE_MARGIN;
 
-    auto randomX = [&]() {
-        const float u = static_cast<float>(m_rng()) / static_cast<float>(m_rng.max());
-        return minX + u * (maxX - minX);
-        };
+    // Prendo una X casuale in [minX, maxX]; se è troppo vicina a una scala, riprova (max 50 tentativi).
+    float x = minX;
+    for (int attempt = 0; attempt < 50; ++attempt) {
+        const float t = static_cast<float>(m_rng()) / static_cast<float>(m_rng.max());
+        x = minX + t * (maxX - minX);
 
-    auto nearLadder = [&](float x) {
-        for (const Ladder& ladder : level.ladders())
-            if (std::abs(ladder.x - x) < HAMMER_LADDER_MARGIN) return true;
-        return false;
-        };
+        bool tooCloseToLadder = false;
+        for (const Ladder& ladder : level.ladders()) {
+            if (std::abs(ladder.x - x) < HAMMER_LADDER_MARGIN) {
+                tooCloseToLadder = true;
+                break;
+            }
+        }
 
-    float x = randomX();
-    for (int attempt = 0; attempt < 50 && nearLadder(x); ++attempt)
-        x = randomX();
+        if (!tooCloseToLadder) break;
+    }
 
+    // Calcolo la quota Y sulla trave e compensa l'offset locale dell'impugnatura.
     m_position = { x, platform.yAt(x) + HAMMER_BOTTOM_LOCAL * HAMMER_SCALE };
     m_taken = false;
 }
 
-/**
- * @brief Restituisce la AABB di raccolta centrata in `m_position`.
- */
 AABB Hammer::box() const
 {
     return { m_position, { PICKUP_HALF_W, PICKUP_HALF_H } };
 }
 
 /**
- * @brief Aggiorna visibilità e oscillazione sinusoidale (`0.12 * sin(3 * t)`) del martello a terra.
+ * @brief Aggiorna visibilità e oscillazione sinusoidale (0.12 * sin(3 * t)) del martello a terra.
  */
 void Hammer::update(Scene& scene, float time)
 {

@@ -6,8 +6,8 @@
  * @namespace TransformConfig
  * @brief Funzioni helper per costruire matrici di trasformazione affine 2D in coordinate omogenee 4x4.
  *
- * In OpenGL/GLM i vertici sono vettori colonna: in un prodotto matriciale `A * B * v` le
- * trasformazioni si applicano da destra verso sinistra (prima `B`, poi `A`).
+ * In OpenGL/GLM i vertici sono vettori colonna: in un prodotto matriciale A * B * v le
+ * trasformazioni si applicano da destra verso sinistra (prima B, poi A).
  */
 namespace TransformConfig {
 

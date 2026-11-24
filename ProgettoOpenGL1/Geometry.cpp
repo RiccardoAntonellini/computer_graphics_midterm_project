@@ -6,7 +6,7 @@
  * Layout di ogni vertice (5 float = 20 byte):
  *   - location 0: posizione 2D (x, y), 2 float, offset = 0
  *   - location 1: colore RGB (r, g, b), 3 float, offset = 2 * sizeof(float)
- * Numero di vertici: `mesh.vertices.size() / 5`.
+ * Numero di vertici: mesh.vertices.size() / 5.
  */
 Geometry::Geometry(const MeshData& mesh)
 {
@@ -40,7 +40,7 @@ Geometry::~Geometry()
 }
 
 /**
- * @brief Esegue il bind del VAO e lancia `glDrawArrays` con la primitiva memorizzata.
+ * @brief Esegue il bind del VAO e lancia glDrawArrays con la primitiva memorizzata.
  */
 void Geometry::draw() const
 {

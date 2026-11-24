@@ -9,9 +9,9 @@
  * @class Hammer
  * @brief Gestisce il power-up martello (mesh modellata con curve cubiche di Hermite da OBJ) a terra.
  *
- * All'inizio della partita il martello è nascosto (`m_taken = true`): compare in una posizione
- * casuale valida su una trave intermedia solo quando `Game` invoca `respawn()`.
- * Una volta raccolto da Mario scompare da terra e viene renderizzato in mano da `MarioView`.
+ * All'inizio della partita il martello è nascosto (m_taken = true): compare in una posizione
+ * casuale valida su una trave intermedia solo quando Game invoca respawn().
+ * Una volta raccolto da Mario scompare da terra e viene renderizzato in mano da MarioView.
  */
 class Hammer {
 public:
@@ -35,7 +35,7 @@ public:
     void hide() { m_taken = true; }
 
     /**
-     * @brief Aggiorna visibilità e trasformazione (es. oscillazione/rotazione) dell'istanza nella Scene.
+     * @brief Aggiorna visibilità e trasformazione dell'istanza nella Scene.
      * @param scene Scena grafica.
      * @param time Tempo corrente in secondi.
      */
@@ -59,8 +59,8 @@ public:
     AABB box() const;
 
 private:
-    std::mt19937 m_rng;           ///< Generatore pseudo-casuale Mersenne Twister per lo spawn.
-    std::size_t m_instance = 0;   ///< Indice dell'istanza del martello nella Scene.
-    glm::vec2 m_position{ 0.0f }; ///< Posizione corrente in coordinate mondo.
-    bool m_taken = true;          ///< True se non è a terra (nascosto o già raccolto).
+    std::mt19937 m_rng;// Generatore pseudo-casuale Mersenne Twister per lo spawn.
+    std::size_t m_instance = 0;// Indice dell'istanza del martello nella Scene.
+    glm::vec2 m_position{ 0.0f };// Posizione corrente in coordinate mondo.
+    bool m_taken = true;// True se non è a terra (nascosto o già raccolto).
 };

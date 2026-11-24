@@ -5,7 +5,7 @@
 namespace ShapeGenerator {
 
     /**
-     * @brief Genera un rettangolo centrato in (0, 0) come 2 triangoli con orientamento antiorario (CCW).
+     * @brief Genera un rettangolo centrato in (0, 0) come 2 triangoli con orientamento antiorario.
      *
      * Semi-dimensioni: x = w / 2, y = h / 2.
      * Triangolo 1: (-x, -y), (+x, -y), (+x, +y)
@@ -19,9 +19,12 @@ namespace ShapeGenerator {
             glm::vec2(-x, -y), { x, -y }, { x, y },
             glm::vec2(-x, -y), { x,  y }, { -x, y }
         };
+
         MeshData mesh;
-        for (const auto& v : pts)
+        for (const auto& v : pts) {
             mesh.vertices.insert(mesh.vertices.end(), { v.x, v.y, color.r, color.g, color.b });
+        }
+            
         return mesh;
     }
 
@@ -46,8 +49,10 @@ namespace ShapeGenerator {
                 { r * std::cos(a), r * std::sin(a) },
                 { r * std::cos(b), r * std::sin(b) }
             };
-            for (const auto& v : tri)
+
+            for (const auto& v : tri) {
                 mesh.vertices.insert(mesh.vertices.end(), { v.x, v.y, color.r, color.g, color.b });
+            }
         }
         return mesh;
     }
@@ -64,9 +69,11 @@ namespace ShapeGenerator {
             { base * 0.5f, -height * 0.5f },
             { 0.0f, height * 0.5f }
         };
+
         MeshData mesh;
-        for (const auto& v : pts)
+        for (const auto& v : pts) {
             mesh.vertices.insert(mesh.vertices.end(), { v.x, v.y, color.r, color.g, color.b });
+        }
         return mesh;
     }
 

@@ -5,7 +5,7 @@ using namespace DonkeyKongConfig;
 using namespace WorldConfig;
 
 /**
- * @brief Posiziona Donkey Kong sulla trave `DK_PLATFORM` all'ascissa `X`.
+ * @brief Posiziona Donkey Kong sulla trave DK_PLATFORM all'ascissa X.
  */
 DonkeyKong::DonkeyKong(const Level& level)
 {
@@ -22,7 +22,7 @@ void DonkeyKong::reset()
 }
 
 /**
- * @brief Riavvia i timer di animazione e lancio senza modificare `m_hits`.
+ * @brief Riavvia i timer di animazione e lancio senza modificare m_hits.
  */
 void DonkeyKong::resetThrow()
 {
@@ -41,7 +41,7 @@ void DonkeyKong::hit(int count)
 }
 
 /**
- * @brief Restituisce la AABB di Donkey Kong centrata in `(m_feet.x, m_feet.y + HEIGHT/2)`.
+ * @brief Restituisce la AABB di Donkey Kong centrata in (m_feet.x, m_feet.y + HEIGHT/2).
  */
 AABB DonkeyKong::box() const
 {
@@ -51,9 +51,9 @@ AABB DonkeyKong::box() const
 /**
  * @brief Avanza la macchina a stati temporizzata (Attesa -> Lancio -> Attesa).
  *
- * Il rilascio del barile avviene esattamente nel frame in cui `m_throwTime` attraversa
- * la soglia `RELEASE_TIME` (controllo `before < RELEASE_TIME && m_throwTime >= RELEASE_TIME`),
- * garantendo un singolo spawn indipendentemente dal valore di `dt`.
+ * Il rilascio del barile avviene esattamente nel frame in cui m_throwTime attraversa
+ * la soglia RELEASE_TIME (controllo before < RELEASE_TIME && m_throwTime >= RELEASE_TIME),
+ * garantendo un singolo spawn indipendentemente dal valore di dt.
  */
 bool DonkeyKong::update(float dt)
 {
@@ -66,7 +66,9 @@ bool DonkeyKong::update(float dt)
         const float before = m_throwTime;
         m_throwTime += dt;
 
-        if (before < RELEASE_TIME && m_throwTime >= RELEASE_TIME) release = true;
+        if (before < RELEASE_TIME && m_throwTime >= RELEASE_TIME) {
+            release = true;
+        }
 
         if (m_throwTime >= THROW_DURATION) {
             m_throwing = false;
@@ -85,7 +87,7 @@ bool DonkeyKong::update(float dt)
 }
 
 /**
- * @brief Calcola l'oscillazione sinusoidale a riposo: `sin(BEAT_SPEED * m_time)` in [-1, 1].
+ * @brief Calcola l'oscillazione sinusoidale a riposo: sin(BEAT_SPEED * m_time) in [-1, 1].
  */
 float DonkeyKong::beat() const
 {

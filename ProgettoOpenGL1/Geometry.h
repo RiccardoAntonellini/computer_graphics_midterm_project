@@ -6,7 +6,7 @@
  * @class Geometry
  * @brief Incapsula i buffer OpenGL (VAO e VBO) di una singola mesh immutabile in GPU.
  *
- * Implementa la separazione tra dati geometrici condivisi e istanze: una singola `Geometry`
+ * Implementa la separazione tra dati geometrici condivisi e istanze: una singola Geometry
  * carica i vertici una volta sola in memoria video e può essere referenziata da più istanze
  * nella `Scene`, ciascuna con la propria Model Matrix.
  * Gestisce le risorse GPU tramite RAII (copia disabilitata).
@@ -14,7 +14,7 @@
 class Geometry {
 public:
     /**
-     * @brief Crea VAO e VBO in OpenGL e carica i vertici definiti in `mesh`.
+     * @brief Crea VAO e VBO in OpenGL e carica i vertici definiti in mesh.
      * @param mesh Dati geometrici lato CPU (vertici, colori/attributi e tipo di primitiva).
      */
     explicit Geometry(const MeshData& mesh);
@@ -28,7 +28,7 @@ public:
     Geometry& operator=(const Geometry&) = delete;
 
     /**
-     * @brief Esegue il bind del VAO e lancia la draw call OpenGL (`glDrawArrays`).
+     * @brief Esegue il bind del VAO e lancia la draw call OpenGL.
      */
     void draw() const;
 

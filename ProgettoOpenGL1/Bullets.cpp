@@ -5,7 +5,7 @@
 using namespace BulletConfig;
 
 /**
- * @brief Posiziona i 5 pickup alle quote calcolate tramite `Platform::yAt()`.
+ * @brief Posiziona i 5 proiettili alle quote calcolate tramite Platform::yAt().
  */
 Bullets::Bullets(const Level& level)
 {
@@ -21,15 +21,17 @@ Bullets::Bullets(const Level& level)
  */
 void Bullets::reset()
 {
-    for (Bullet& bullet : m_bullets) bullet.collected = false;
+    for (Bullet& bullet : m_bullets) {
+        bullet.collected = false;
+    }
 }
 
 /**
- * @brief Calcola la posizione animata del pickup `index` al tempo `time`.
+ * @brief Calcola la posizione animata del proiettile index al tempo time.
  *
  * Legge oraria del moto armonico verticale:
  *   y(t) = y0 + A * sin(omega * t + index * phaseStep)
- * Identica alla formula eseguita in `coin.vert` lato GPU, così hitbox e grafica coincidono.
+ * Identica alla formula eseguita in bullet.vert lato GPU, così hitbox e grafica coincidono.
  */
 glm::vec2 Bullets::animatedPosition(std::size_t index, float time) const
 {
@@ -39,24 +41,28 @@ glm::vec2 Bullets::animatedPosition(std::size_t index, float time) const
 }
 
 /**
- * @brief Conta quanti pickup hanno `collected == true`.
+ * @brief Conta quanti proiettili hanno collected==true.
  */
 int Bullets::collectedCount() const
 {
     int count = 0;
-    for (const Bullet& bullet : m_bullets)
-        if (bullet.collected) ++count;
+    for (const Bullet& bullet : m_bullets) {
+        if (bullet.collected) {
+            ++count;
+        }
+    }
     return count;
 }
 
 /**
- * @brief Controlla le collisioni AABB con i pickup non ancora raccolti e li segna come raccolti.
+ * @brief Controlla le collisioni AABB con i proiettili non ancora raccolti e li segna come raccolti.
  */
 int Bullets::collectTouched(const AABB& box, float time)
 {
     int taken = 0;
     for (std::size_t i = 0; i < m_bullets.size(); ++i) {
         if (m_bullets[i].collected) continue;
+
         const AABB pickupBox{ animatedPosition(i, time), { RADIUS, RADIUS } };
         if (intersects(pickupBox, box)) {
             m_bullets[i].collected = true;

@@ -11,20 +11,21 @@ std::size_t Scene::addGeometry(const MeshData& mesh)
 }
 
 /**
- * @brief Aggiunge un'istanza visibile con Model Matrix identità associata a `geometryIndex`.
- * @throws std::out_of_range Se `geometryIndex` non corrisponde a nessuna Geometry registrata.
+ * @brief Aggiunge un'istanza visibile con Model Matrix identità associata a geometryIndex.
+ * @throws std::out_of_range Se geometryIndex non corrisponde a nessuna Geometry registrata.
  */
 std::size_t Scene::addInstance(std::size_t geometryIndex)
 {
     if (geometryIndex >= m_geometries.size()) {
         throw std::out_of_range("geometryIndex non valido");
     }
+
     m_instances.push_back({ geometryIndex, glm::mat4(1.0f), true });
     return m_instances.size() - 1;
 }
 
 /**
- * @brief Accesso modificabile all'istanza `index` (con controllo dei limiti).
+ * @brief Accesso modificabile all'istanza index (con controllo dei limiti).
  */
 GeometryInstance& Scene::instance(std::size_t index)
 {
@@ -32,7 +33,7 @@ GeometryInstance& Scene::instance(std::size_t index)
 }
 
 /**
- * @brief Accesso in sola lettura alla Geometry `index` (con controllo dei limiti).
+ * @brief Accesso in sola lettura alla Geometry index (con controllo dei limiti).
  */
 const Geometry& Scene::geometry(std::size_t index) const
 {

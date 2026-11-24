@@ -3,14 +3,10 @@
 #include "TransformConfig.h"
 #include "Config.h"
 
-namespace {
-    const glm::vec3 BODY_COLOR(0.90f, 0.50f, 0.10f);
-    const glm::vec3 STRIPE_COLOR(0.45f, 0.20f, 0.05f);
-    constexpr float HALF_PI = 1.5707963f;
-}
+using namespace BarrelConfig;
 
 /**
- * @brief Crea le 2 geometrie unitarie (disco e striscia) e istanzia i 3 componenti per ogni barile del pool.
+ * @brief Crea le 2 geometrie unitarie e istanzia i 3 componenti per ogni barile del pool.
  */
 BarrelsView::BarrelsView(Scene& scene)
 {
@@ -30,7 +26,7 @@ BarrelsView::BarrelsView(Scene& scene)
 /**
  * @brief Aggiorna visibilità e matrici TRS di disco e strisce incrociate per ogni barile attivo.
  *
- * `stripeB` è ruotata di `barrel.angle + PI/2` rispetto a `stripeA` per formare una croce
+ * stripeB è ruotata di barrel.angle + PI/2 rispetto a stripeA per formare una croce
  * che ruota solidalmente con il barile, rendendo visibile il rotolamento.
  */
 void BarrelsView::update(Scene& scene, const Barrels& barrels)
@@ -45,11 +41,8 @@ void BarrelsView::update(Scene& scene, const Barrels& barrels)
         if (!barrel.active) continue;
 
         const glm::vec2 center = barrel.center();
-        scene.instance(slot.body).modelMatrix =
-            TransformConfig::makeUniform(center, barrel.angle, BarrelConfig::RADIUS);
-        scene.instance(slot.stripeA).modelMatrix =
-            TransformConfig::makeUniform(center, barrel.angle, BarrelConfig::RADIUS);
-        scene.instance(slot.stripeB).modelMatrix =
-            TransformConfig::makeUniform(center, barrel.angle + HALF_PI, BarrelConfig::RADIUS);
+        scene.instance(slot.body).modelMatrix = TransformConfig::makeUniform(center, barrel.angle, BarrelConfig::RADIUS);
+        scene.instance(slot.stripeA).modelMatrix = TransformConfig::makeUniform(center, barrel.angle, BarrelConfig::RADIUS);
+        scene.instance(slot.stripeB).modelMatrix = TransformConfig::makeUniform(center, barrel.angle + HALF_PI, BarrelConfig::RADIUS);
     }
 }

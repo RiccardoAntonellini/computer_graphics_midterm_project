@@ -22,7 +22,7 @@ Controls InputReader::read(GLFWwindow* window)
     c.down = isDown(window, GLFW_KEY_S) || isDown(window, GLFW_KEY_DOWN);
     c.quit = isDown(window, GLFW_KEY_ESCAPE);
 
-    // Rilevamento fronte di salita (edge-triggered): true solo al primo frame di pressione.
+	// Pressione e rilascio dei tasti di azione necessaria
     const bool jumpNow = isDown(window, GLFW_KEY_SPACE);
     const bool fireNow = isDown(window, GLFW_KEY_F);
     const bool restartNow = isDown(window, GLFW_KEY_R);

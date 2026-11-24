@@ -5,25 +5,25 @@
 
 /**
  * @class BulletsView
- * @brief Gestisce la rappresentazione grafica dei pickup nella Scene.
+ * @brief Gestisce la rappresentazione grafica dei proiettili nella Scene.
  *
- * Utilizza una singola Geometry condivisa (modellata per il proiettile/pickup) istanziata
- * 5 volte. Le istanze vengono renderizzate tramite `CoinRenderer` (con shader dedicato
- * `coin.vert`) anziché dal renderer standard della scena.
+ * Utilizza una singola Geometry condivisa (modellata per il proiettile) istanziata
+ * 5 volte. Le istanze vengono renderizzate tramite `BulletRenderer` (con shader dedicato
+ * bullet.vert) anziché dal renderer standard della scena.
  */
 class BulletsView {
 public:
     /**
-     * @brief Registra la geometria condivisa e crea nella Scene un'istanza per ogni pickup.
+     * @brief Registra la geometria condivisa e crea nella Scene un'istanza per ogni proiettile.
      * @param scene Scena grafica.
-     * @param bullets Stato logico iniziale dei pickup.
+     * @param bullets Stato logico iniziale dei proiettili.
      */
     BulletsView(Scene& scene, const Bullets& bullets);
 
     /**
      * @brief Aggiorna la visibilità delle istanze nella Scene in base allo stato `collected`.
      * @param scene Scena grafica da aggiornare.
-     * @param bullets Stato logico corrente dei pickup.
+     * @param bullets Stato logico corrente dei proiettili.
      */
     void update(Scene& scene, const Bullets& bullets);
 
@@ -34,8 +34,8 @@ public:
     std::size_t geometryIndex() const { return m_geometry; }
 
     /**
-     * @brief Restituisce gli indici delle istanze dei pickup nella Scene.
-     * @return const std::vector<std::size_t>& Vettore degli indici di istanza (passato a CoinRenderer).
+     * @brief Restituisce gli indici delle istanze dei proiettili nella Scene.
+     * @return const std::vector<std::size_t>& Vettore degli indici di istanza (passato a BulletRenderer).
      */
     const std::vector<std::size_t>& instances() const { return m_instances; }
 
