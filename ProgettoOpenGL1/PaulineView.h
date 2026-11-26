@@ -5,9 +5,7 @@
 
 /**
  * @class PaulineView
- * @brief Rappresentazione grafica di Pauline costruita come Rig di primitive geometriche.
- *
- * Anima il braccio di saluto (m_waveArm) con una rotazione periodica in funzione del tempo.
+ * @brief Rappresentazione grafica di Pauline costruita come Rig di primitive geometriche e animazione braccio.
  */
 class PaulineView {
 public:
@@ -27,6 +25,6 @@ public:
 
 private:
     Rig m_rig;
-    std::size_t m_waveArm = 0; // Indice nel Rig del braccio animato.
-    std::size_t m_restArm = 0; // Indice nel Rig del braccio fermo.
+    std::size_t m_waveArm = 0;// Indice nel Rig del braccio animato.
+    std::size_t m_restArm = 0;// Indice nel Rig del braccio fermo.
 };

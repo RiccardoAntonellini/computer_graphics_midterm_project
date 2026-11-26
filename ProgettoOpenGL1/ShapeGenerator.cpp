@@ -60,7 +60,7 @@ namespace ShapeGenerator {
     /**
      * @brief Genera un triangolo isoscele centrato nell'origine con base in basso e vertice in alto.
      *
-     * Vertici (CCW): (-base/2, -height/2), (+base/2, -height/2), (0, +height/2).
+     * Vertici: (-base/2, -height/2), (+base/2, -height/2), (0, +height/2).
      */
     MeshData triangle(float base, float height, const glm::vec3& color)
     {

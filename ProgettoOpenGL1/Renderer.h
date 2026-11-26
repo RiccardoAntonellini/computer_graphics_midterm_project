@@ -7,10 +7,6 @@
 /**
  * @class Renderer
  * @brief Gestisce il rendering degli oggetti della Scene tramite proiezione ortografica 2D.
- *
- * Attiva lo shader degli oggetti, carica la matrice di proiezione P e, per ogni istanza
- * visibile della scena, imposta la rispettiva Model Matrix M e invoca la draw call della
- * Geometry associata.
  */
 class Renderer {
 public:
@@ -23,10 +19,6 @@ public:
     /**
      * @brief Costruisce la matrice di proiezione ortografica 2D centrata nell'origine.
      *
-     * Mappa linearmente il rettangolo del mondo [-halfWidth, +halfWidth] x [-halfHeight, +halfHeight]
-     * nello spazio normalizzato NDC [-1, +1] x [-1, +1] senza distorsione prospettica:
-     *   P = glm::ortho(-halfWidth, halfWidth, -halfHeight, halfHeight, -1.0f, 1.0f)
-     *
      * @param halfWidth Semi-larghezza visibile in coordinate mondo.
      * @param halfHeight Semi-altezza visibile in coordinate mondo.
      */
@@ -36,10 +28,10 @@ public:
      * @brief Disegna tutte le istanze visibili della scena, escludendo opzionalmente una Geometry.
      *
      * Il parametro excludedGeometryIndex permette di saltare le istanze renderizzate da
-     * uno shader dedicato (es. i proiettili disegnati da BulletRenderer).
+     * uno shader dedicato, ad esempio i proiettili disegnati da BulletRenderer.
      *
      * @param scene Scena contenente geometrie e istanze.
-     * @param excludedGeometryIndex Indice della Geometry da saltare (default: nessuna esclusione).
+     * @param excludedGeometryIndex Indice della Geometry da saltare (default = nessuna esclusione).
      */
     void drawScene(const Scene& scene, std::size_t excludedGeometryIndex =
         std::numeric_limits<std::size_t>::max()) const;

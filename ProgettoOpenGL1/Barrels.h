@@ -33,9 +33,6 @@ struct Barrel {
 /**
  * @class Barrels
  * @brief Gestisce la logica fisica e il ciclo di vita (pool) di tutti i barili rotolanti.
- *
- * Completamente indipendente dal layer grafico. Lo spawn è comandato esternamente
- * dalla logica di gioco (es. sincronizzato con l'animazione di Donkey Kong).
  */
 class Barrels {
 public:
@@ -64,14 +61,14 @@ public:
 
     /**
      * @brief Verifica se almeno un barile attivo collide con una data bounding box.
-     * @param box AABB dell'entità da testare (es. il giocatore).
+     * @param box AABB dell'entità da testare.
      * @return true se esiste almeno un'intersezione, false altrimenti.
      */
     bool hits(const AABB& box) const;
 
     /**
      * @brief Disattiva tutti i barili attivi che intersecano una data bounding box.
-     * @param box AABB dell'area di distruzione (es. hitbox del martello).
+     * @param box AABB dell'area di distruzione.
      */
     void destroyHit(const AABB& box);
 

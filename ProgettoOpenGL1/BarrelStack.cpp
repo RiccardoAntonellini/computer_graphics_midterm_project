@@ -7,11 +7,6 @@ using namespace WorldConfig;
 
 /**
  * @brief Carica la mesh Hermite barrel.obj una sola volta e crea 4 istanze impilate (2x2).
- *
- * Calcolo della quota di ciascun barile in coordinate mondo:
- *   y = platform.yAt(x) + (BARREL_BOTTOM_LOCAL * BARREL_SCALE) + row * (BARREL_HEIGHT_LOCAL * BARREL_SCALE)
- * Il termine BARREL_BOTTOM_LOCAL * BARREL_SCALE compensa il fatto che la base della mesh
- * in coordinate locali si trova a y = -0.363 sotto l'origine.
  */
 BarrelStack::BarrelStack(Scene& scene, const Level& level)
 {

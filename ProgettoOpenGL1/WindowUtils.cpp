@@ -6,10 +6,6 @@ using namespace WorldConfig;
 
 /**
  * @brief Inizializza GLFW, crea la finestra OpenGL 3.3 Core, attiva V-Sync e carica GLAD.
- *
- * Blocca l'aspect ratio della finestra sulle proporzioni esatte del mondo di gioco
- * (2 * FIELD_HALF_WIDTH : 2 * HALF_HEIGHT) in modo che la proiezione ortografica
- * non introduca deformazioni durante il ridimensionamento.
  */
 WindowUtils::WindowUtils(int width, int height, const char* title)
 {

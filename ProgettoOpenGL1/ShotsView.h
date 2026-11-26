@@ -7,7 +7,7 @@
  * @class ShotsView
  * @brief Rappresentazione grafica dei colpi sparati da Mario nella Scene.
  *
- * Crea una singola Geometry (disco) condivisa da tutte le istanze del pool,
+ * Crea una singola Geometry condivisa da tutte le istanze del pool,
  * aggiornando a ogni frame visibilità e traslazione.
  */
 class ShotsView {
@@ -19,7 +19,7 @@ public:
     explicit ShotsView(Scene& scene);
 
     /**
-     * @brief Sincronizza visibilità e posizione delle istanze con lo stato logico di `Shots`.
+     * @brief Sincronizza visibilità e posizione delle istanze con lo stato logico di Shots.
      * @param scene Scena grafica da aggiornare.
      * @param shots Stato logico corrente dei colpi.
      */

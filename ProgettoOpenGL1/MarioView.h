@@ -6,9 +6,6 @@
 /**
  * @class MarioView
  * @brief Rappresentazione grafica di Mario: Rig assemblato da primitive + martello Hermite.
- *
- * Non contiene logica di gioco: legge lo stato da `Mario` (posizione, verso, oscillazione
- * degli arti, stato martello e lampeggio) e aggiorna le Model Matrix nella Scene.
  */
 class MarioView {
 public:
@@ -32,14 +29,10 @@ private:
     std::size_t m_frontLeg = 0;
     std::size_t m_backArm = 0;
     std::size_t m_frontArm = 0;
-    std::size_t m_heldHammer = 0; // Indice dell'istanza del martello nella Scene.
+    std::size_t m_heldHammer = 0;// Indice dell'istanza del martello nella Scene.
 
     /**
      * @brief Compone la Model Matrix del martello in mano a Mario.
-     *
-     * Combina traslazione alla mano di Mario, mirroring orizzontale (in base a facing()),
-     * rotazione oscillante attorno all'impugnatura, scala e compensazione dell'offset locale
-     * dell'impugnatura (HAMMER_HANDLE_LOCAL).
      *
      * @param mario Stato logico del giocatore.
      * @return glm::mat4 Matrice di trasformazione 4x4 in coordinate omogenee.

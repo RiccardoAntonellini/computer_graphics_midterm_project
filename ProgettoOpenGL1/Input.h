@@ -10,8 +10,7 @@
  * @brief Traduce lo stato della tastiera GLFW in una struct Controls indipendente dalla libreria.
  *
  * Mantiene lo stato del frame precedente per i comandi discreti (salto, sparo, restart, debug)
- * in modo da rilevare il fronte di salita (rising edge):
- *   pressedThisFrame = isPressedNow && !wasPressedLastFrame
+ * in modo da rilevare la singola pressione --> pressedThisFrame = isPressedNow && !wasPressedLastFrame
  * evitando ripetizioni involontarie quando il tasto resta premuto per più frame.
  */
 class InputReader {

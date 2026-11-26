@@ -22,11 +22,10 @@ using namespace WorldConfig;
  * Architettura di rendering (3 programmi shader distinti per frame):
  *   1. background: shader procedurale full-screen in NDC (background.vert/frag).
  *   2. renderer: shader standard degli oggetti (basic.vert/frag) con proiezione ortografica, escludendo la Geometry dei bullets.
- *   3. BulletRenderer`: shader animato dei bullets (bullet.vert + basic.frag).
+ *   3. BulletRenderer: shader animato dei bullets (bullet.vert + basic.frag).
  *   4. hud: overlay Dear ImGui.
  *
- * Gestione del tempo: dt = clamp(now - previousTime, 0.0, 0.03) garantisce moto indipendente
- * dal frame rate ed evita salti fisici (tunneling) in caso di lag o spostamento della finestra.
+ * Gestione del tempo: dt = clamp(now - previousTime, 0.0, 0.03) garantisce moto indipendente dal frame rate.
  */
 int main()
 {

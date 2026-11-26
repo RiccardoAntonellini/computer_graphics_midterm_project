@@ -9,19 +9,19 @@
  * @brief Stato cinematico di un singolo colpo sparato da Mario.
  */
 struct Shot {
-    bool active = false;        // True se il colpo è attualmente in volo (object pooling).
-    glm::vec2 position{ 0.0f }; // Posizione corrente del centro in coordinate mondo.
-    glm::vec2 velocity{ 0.0f }; // Vettore velocità costante (unità/s) diretto verso il bersaglio.
+    bool active = false;// True se il colpo è attualmente in volo.
+    glm::vec2 position{ 0.0f };// Posizione corrente del centro in coordinate mondo.
+    glm::vec2 velocity{ 0.0f };// Vettore velocità costante diretto verso il bersaglio.
 };
 
 /**
  * @class Shots
- * @brief Gestisce il pool e il moto rettilineo uniforme dei colpi sparati da Mario (nessuna grafica).
+ * @brief Gestisce il pool e il moto rettilineo uniforme dei colpi sparati da Mario.
  */
 class Shots {
 public:
     /**
-     * @brief Inizializza il pool di colpi (tutti inattivi).
+     * @brief Inizializza il pool di colpi.
      */
     Shots();
 

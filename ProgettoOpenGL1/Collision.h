@@ -5,9 +5,6 @@
 /**
  * @struct AABB
  * @brief Axis-Aligned Bounding Box 2D in rappresentazione centro + semi-dimensioni.
- * 
- * Rispetto alla rappresentazione (min, max), questa formulazione rende immediato
- * il test di intersezione basato sulla distanza tra i centri.
  */
 struct AABB {
     glm::vec2 center;   // Coordinate (x, y) del centro del rettangolo.
@@ -18,7 +15,7 @@ struct AABB {
  * @brief Verifica se due AABB si intersecano (sovrapposizione stretta).
  *
  * Applica il Separating Axis Theorem.
- * Il minore stretto (<) implica che due box tangenti lungo un bordo non sono in collisione.
+ * Il minore stretto implica che due box tangenti lungo un bordo non sono in collisione.
  *
  * @param a Prima bounding box.
  * @param b Seconda bounding box.

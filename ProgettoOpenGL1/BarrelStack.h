@@ -8,9 +8,7 @@
  * @class BarrelStack
  * @brief Gestisce la pila statica di barili accanto a Donkey Kong.
  *
- * Dimostra il riutilizzo geometrico tramite istanziazione: una singola Geometry condivisa
- * viene istanziata quattro volte nella Scene con matrici di trasformazione
- * indipendenti. Funge anche da ostacolo solido esponendo le AABB di ciascun barile.
+ * Funge anche da ostacolo solido esponendo le AABB di ciascun barile.
  */
 class BarrelStack {
 public:

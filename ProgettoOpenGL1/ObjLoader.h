@@ -10,7 +10,7 @@
 
 /**
  * @namespace ObjLoader
- * @brief Parser leggero di file Wavefront OBJ/MTL 2D (es. mesh esportate dal modellatore Hermite).
+ * @brief Parser leggero di file OBJ/MTL 2D.
  *
  * Produce MeshData non indicizzati con layout interleaved (x, y, r, g, b) e primitiva GL_TRIANGLES.
  */
@@ -57,10 +57,10 @@ namespace ObjLoader {
     }
 
     /**
-     * @brief Carica una mesh 2D da file OBJ (con eventuali materiali MTL) in una `MeshData`.
+     * @brief Carica una mesh 2D da file OBJ (con eventuali materiali MTL) in una MeshData.
      * @note Le coordinate vengono mantenute esattamente come nel file OBJ (nessuna centratura o scala automatica).
-     * @param filename Percorso del file `.obj`.
-     * @param[out] mesh Struttura `MeshData` popolata in caso di successo.
+     * @param filename Percorso del file .obj.
+     * @param[out] mesh Struttura MeshData popolata in caso di successo.
      * @param[out] error Messaggio descrittivo in caso di errore.
      * @return true se il caricamento ha prodotto almeno un triangolo valido, false altrimenti.
      */
@@ -114,7 +114,6 @@ namespace ObjLoader {
                     try {
                         int index = std::stoi(token.substr(0, token.find('/')));
                         if (index == 0) { face.clear(); break; }
-                        // Gli indici OBJ positivi sono 1-based; quelli negativi sono relativi alla fine del vettore.
                         index = index > 0 ? index - 1 : static_cast<int>(vertices.size()) + index;
                         if (index < 0 || index >= static_cast<int>(vertices.size())) { face.clear(); break; }
                         face.push_back(index);

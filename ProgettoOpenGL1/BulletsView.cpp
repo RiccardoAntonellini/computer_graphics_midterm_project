@@ -8,8 +8,8 @@ using namespace TransformConfig;
 /**
  * @brief Crea una singola Geometry composita e 5 istanze.
  *
- * Le matrici Model sono statiche (posizione di riposo + scala uniforme `RADIUS`):
- * l'oscillazione verticale viene applicata dinamicamente nel vertex shader `bullet.vert`.
+ * Le matrici Model sono statiche (posizione di riposo + scala uniforme RADIUS):
+ * l'oscillazione verticale viene applicata dinamicamente nel vertex shader bullet.vert.
  */
 BulletsView::BulletsView(Scene& scene, const Bullets& bullets)
 {

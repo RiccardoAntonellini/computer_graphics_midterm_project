@@ -13,5 +13,5 @@
  */
 struct MeshData {
     std::vector<float> vertices;// Buffer interleaved di vertici non indicizzati.
-    GLenum primitive = GL_TRIANGLES;// Modalità di assemblaggio primitive OpenGL (es. GL_TRIANGLES, GL_TRIANGLE_STRIP).
+    GLenum primitive = GL_TRIANGLES;// Modalità di assemblaggio primitive OpenGL.
 };

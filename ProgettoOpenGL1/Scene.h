@@ -8,20 +8,16 @@
 /**
  * @struct GeometryInstance
  * @brief Stato di una singola istanza renderizzabile nella Scene.
- *
- * Non duplica i vertici in memoria: conserva solo l'indice della Geometry condivisa,
- * la propria matrice di trasformazione modelMatrix (spazio locale -> spazio mondo)
- * e il flag di visibilità.
  */
 struct GeometryInstance {
-    std::size_t geometryIndex = 0; // Indice della Geometry condivisa in `Scene`.
-    glm::mat4 modelMatrix{ 1.0f }; // Matrice di modello 4x4 in coordinate omogenee.
-    bool visible = true;           // Se false, l'istanza viene saltata dal renderer.
+    std::size_t geometryIndex = 0;// Indice della Geometry condivisa in `Scene`.
+    glm::mat4 modelMatrix{ 1.0f };// Matrice di modello 4x4 in coordinate omogenee.
+    bool visible = true;// Se false, l'istanza viene saltata dal renderer.
 };
 
 /**
  * @class Scene
- * @brief Contenitore centrale che separa i dati geometrici condivisi (Geometry) dalle istanze (GeometryInstance).
+ * @brief Contenitore centrale che separa i dati geometrici condivisi dalle istanze.
  *
  * Le istanze vengono disegnate nell'ordine di inserimento.
  */
@@ -35,14 +31,14 @@ public:
     std::size_t addGeometry(const MeshData& mesh);
 
     /**
-     * @brief Crea una nuova istanza collegata a una Geometry esistente (con Model Matrix identità).
+     * @brief Crea una nuova istanza collegata a una Geometry esistente.
      * @param geometryIndex Indice della Geometry da referenziare.
      * @return std::size_t Indice univoco dell'istanza creata.
      */
     std::size_t addInstance(std::size_t geometryIndex);
 
     /**
-     * @brief Accesso modificabile a un'istanza tramite indice (per aggiornare matrice o visibilità).
+     * @brief Accesso modificabile a un'istanza tramite indice.
      * @param index Indice dell'istanza.
      * @return GeometryInstance& Riferimento all'istanza.
      */

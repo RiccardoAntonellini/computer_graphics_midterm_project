@@ -29,8 +29,7 @@ void Bullets::reset()
 /**
  * @brief Calcola la posizione animata del proiettile index al tempo time.
  *
- * Legge oraria del moto armonico verticale:
- *   y(t) = y0 + A * sin(omega * t + index * phaseStep)
+ * Legge oraria del moto armonico verticale --> y(t) = y0 + A * sin(omega * t + index * phaseStep)
  * Identica alla formula eseguita in bullet.vert lato GPU, così hitbox e grafica coincidono.
  */
 glm::vec2 Bullets::animatedPosition(std::size_t index, float time) const

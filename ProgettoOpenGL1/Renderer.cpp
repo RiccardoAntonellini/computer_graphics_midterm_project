@@ -3,8 +3,6 @@
 
 /**
  * @brief Imposta la matrice di proiezione ortografica 2D centrata nell'origine.
- *
- * Mappa il volume [-w, +w] x [-h, +h] x [-1, +1] in NDC [-1, +1]^3.
  */
 void Renderer::setOrthoProjection(float w, float h)
 {

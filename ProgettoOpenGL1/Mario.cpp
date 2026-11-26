@@ -161,10 +161,6 @@ void Mario::stopClimbing()
 
 /**
  * @brief Integra camminata orizzontale, ostacoli solidi, salto, gravità, soffitto e appoggio su travi.
- *
- * Integrazione verticale in volo:
- *   v_y(t + dt) = v_y(t) + GRAVITY * dt
- *   y(t + dt)   = y(t) + v_y(t + dt) * dt
  * L'oscillazione degli arti segue m_swing = sin(m_phase) con m_phase += WALK_ANIM_SPEED * dt.
  */
 void Mario::walk(float dt, const Controls& controls, const Level& level,

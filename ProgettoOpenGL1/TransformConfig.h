@@ -5,23 +5,15 @@
 /**
  * @namespace TransformConfig
  * @brief Funzioni helper per costruire matrici di trasformazione affine 2D in coordinate omogenee 4x4.
- *
- * In OpenGL/GLM i vertici sono vettori colonna: in un prodotto matriciale A * B * v le
- * trasformazioni si applicano da destra verso sinistra (prima B, poi A).
  */
 namespace TransformConfig {
 
     /**
      * @brief Costruisce la composizione standard TRS: M = T(position) * R_z(angle) * S(scale).
      *
-     * Ordine di applicazione sul vertice locale:
-     *   1. Scala (S) lungo X e Y.
-     *   2. Rotazione (R) in senso antiorario attorno all'asse Z di `angle` radianti.
-     *   3. Traslazione (T) alla posizione finale nel mondo.
-     *
      * @param position Traslazione (x, y).
      * @param angle Angolo di rotazione attorno all'asse Z in radianti.
-     * @param scale Fattori di scala (sx, sy); valori negativi producono una riflessione (mirroring).
+     * @param scale Fattori di scala (sx, sy); valori negativi producono una riflessione.
      * @return glm::mat4 Matrice di trasformazione 4x4.
      */
     inline glm::mat4 make(const glm::vec2& position, float angle, const glm::vec2& scale)
@@ -56,16 +48,6 @@ namespace TransformConfig {
 
     /**
      * @brief Costruisce la trasformazione locale di un arto che ruota attorno al suo estremo superiore (spalla o anca).
-     *
-     * La mesh dell'arto è un rettangolo centrato in (0, 0) di altezza `length`. Per farlo ruotare
-     * attorno all'estremo superiore anziché attorno al proprio centro, si compone:
-     *   M = T(pivotX, pivotY) * R_z(angle) * T(0, -length / 2)
-     *
-     * Effetto passo-passo sul vertice (da destra a sinistra):
-     *   1. T(0, -length/2): sposta il rettangolo in basso in modo che il suo bordo superiore coincida con l'origine (0, 0).
-     *   2. R_z(angle): ruota l'arto attorno all'origine (che ora è l'articolazione).
-     *      Con angle > 0 (antiorario) l'arto pendente si sposta verso +X.
-     *   3. T(pivotX, pivotY): posiziona l'articolazione nella sede corretta del corpo (spalla o anca).
      *
      * @param pivotX Coordinata X dell'articolazione nello spazio locale del Rig.
      * @param pivotY Coordinata Y dell'articolazione nello spazio locale del Rig.

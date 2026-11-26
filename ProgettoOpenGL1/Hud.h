@@ -4,10 +4,7 @@
 
 /**
  * @class Hud
- * @brief Interfaccia grafica Dear ImGui per lo stato della partita (vite, proiettili, timer, martello, esito).
- *
- * Gestisce il ciclo di vita di ImGui secondo il pattern RAII: deve essere costruita DOPO
- * la creazione della finestra GLFW e distrutta PRIMA della sua chiusura.
+ * @brief Interfaccia grafica Dear ImGui per lo stato della partita.
  */
 class Hud {
 public:

@@ -21,7 +21,7 @@ public:
     Shader(const std::string& vertexSource, const std::string& fragmentSource);
 
     /**
-     * @brief Rilascia il programma shader dalla GPU (glDeleteProgram).
+     * @brief Rilascia il programma shader dalla GPU.
      */
     ~Shader();
 
@@ -29,19 +29,19 @@ public:
     Shader& operator=(const Shader&) = delete;
 
     /**
-     * @brief Attiva questo programma shader nella pipeline OpenGL corrente (glUseProgram).
+     * @brief Attiva questo programma shader nella pipeline OpenGL corrente.
      */
     void use() const;
 
     /**
-     * @brief Imposta una uniform di tipo mat4 (es. uProjection, uModel).
+     * @brief Imposta una uniform di tipo mat4.
      * @param uniformName Nome della variabile uniform nello shader GLSL.
      * @param value Matrice 4x4 da caricare in GPU.
      */
     void setMat4(const char* uniformName, const glm::mat4& value) const;
 
     /**
-     * @brief Imposta una uniform di tipo float (es. uTime).
+     * @brief Imposta una uniform di tipo float.
      * @param uniformName Nome della variabile uniform nello shader GLSL.
      * @param value Valore scalare da caricare in GPU.
      */

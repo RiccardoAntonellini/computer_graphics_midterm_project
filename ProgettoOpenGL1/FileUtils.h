@@ -6,7 +6,7 @@
 
 /**
  * @namespace FileUtils
- * @brief Utility di I/O per la lettura di file di testo (es. sorgenti shader GLSL).
+ * @brief Utility per la lettura di file di testo e shader glsl.
  */
 namespace FileUtils {
 

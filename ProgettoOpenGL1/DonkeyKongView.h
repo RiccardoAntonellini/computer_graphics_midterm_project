@@ -5,11 +5,7 @@
 
 /**
  * @class DonkeyKongView
- * @brief Rappresentazione grafica di Donkey Kong costruita come Rig di primitive geometriche.
- *
- * Assembla più primitive tramite trasformazioni gerarchiche/locali gestite da Rig e anima
- * le due braccia (m_backArm, m_frontArm) leggendo lo stato (beat(), throwProgress())
- * da DonkeyKong.
+ * @brief Rappresentazione grafica di Donkey Kong costruita come Rig di primitive geometriche e animazione braccia.
  */
 class DonkeyKongView {
 public:
@@ -28,6 +24,6 @@ public:
 
 private:
     Rig m_rig;
-    std::size_t m_backArm = 0;  // Indice nel Rig del braccio posteriore.
-    std::size_t m_frontArm = 0; // Indice nel Rig del braccio anteriore.
+    std::size_t m_backArm = 0;// Indice nel Rig del braccio posteriore.
+    std::size_t m_frontArm = 0;// Indice nel Rig del braccio anteriore.
 };

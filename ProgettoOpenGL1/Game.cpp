@@ -7,7 +7,7 @@ using namespace DonkeyKongConfig;
 using namespace HammerConfig;
 
 /**
- * @brief Costruisce livello, entità logiche e viste nell'ordine di rendering (painter's algorithm).
+ * @brief Costruisce livello, entità logiche e viste nell'ordine di rendering.
  */
 Game::Game(Scene& scene)
     : m_scene(scene),

@@ -8,8 +8,7 @@
  *
  * Implementa la separazione tra dati geometrici condivisi e istanze: una singola Geometry
  * carica i vertici una volta sola in memoria video e può essere referenziata da più istanze
- * nella `Scene`, ciascuna con la propria Model Matrix.
- * Gestisce le risorse GPU tramite RAII (copia disabilitata).
+ * nella Scene, ciascuna con la propria Model Matrix.
  */
 class Geometry {
 public:

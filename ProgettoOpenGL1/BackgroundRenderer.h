@@ -5,11 +5,6 @@
 /**
  * @class BackgroundRenderer
  * @brief Gestisce il rendering dello sfondo a schermo intero tramite uno shader dedicato.
- *
- * Non fa parte della Scene: la geometria (un quad full-screen) è definita direttamente
- * in Normalized Device Coordinates (NDC), ovvero nel dominio [-1, 1] x [-1, 1].
- * Poiché i vertici sono già in Clip Space / NDC, il vertex shader non richiede alcuna
- * matrice di modello (Model) né di proiezione (Projection) per coprire l'intera viewport.
  */
     class BackgroundRenderer
 {
@@ -33,7 +28,7 @@ public:
     /**
      * @brief Disegna lo sfondo passando il tempo corrente allo shader per effetti procedurali.
      * @param timeSeconds Tempo trascorso dall'avvio dell'applicazione in secondi, passato come
-     *                    uniform per animare gradienti o variazioni cromatiche lato GPU.
+     * uniform per animare gradienti o variazioni cromatiche lato GPU.
      */
     void draw(float timeSeconds) const;
 

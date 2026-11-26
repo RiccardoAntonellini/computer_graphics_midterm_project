@@ -10,7 +10,7 @@ using namespace MarioConfig;
 using namespace TransformConfig;
 
 /**
- * @brief Assembla il Rig di Mario (rettangoli, cerchio, triangolo) e aggancia la mesh Hermite `hammer.obj`.
+ * @brief Assembla il Rig di Mario (rettangoli, cerchio, triangolo) e aggancia la mesh Hermite hammer.obj.
  */
 MarioView::MarioView(Scene& scene)
 {
@@ -36,14 +36,14 @@ MarioView::MarioView(Scene& scene)
  * Composizione matriciale (applicata da destra a sinistra):
  * M = T(HAND_X, HAND_Y) * R_z(angle) * S(HELD_SCALE) * T(0, +HAMMER_HANDLE_LOCAL)
  * 
- * 1. `T(0, +HAMMER_HANDLE_LOCAL)` sposta l'impugnatura (y = -0.27 in `hammer.obj`) sull'origine (0, 0).
+ * 1. T(0, +HAMMER_HANDLE_LOCAL) sposta l'impugnatura (y = -0.27 in hammer.obj) sull'origine (0, 0).
  * 
- * 2. `S(HELD_SCALE)` porta la mesh alle dimensioni di gioco.
+ * 2. S(HELD_SCALE) porta la mesh alle dimensioni di gioco.
  * 
- * 3. `R_z(angle)` ruota il martello attorno all'impugnatura tra 0 (in alto) e -PI/2 (in avanti),
- *    con `t = 0.5 + 0.5 * sin(SWING_SPEED * timeLeft)` in [0, 1].
+ * 3. R_z(angle) ruota il martello attorno all'impugnatura tra 0 (in alto) e -PI/2 (in avanti),
+ *    con t = 0.5 + 0.5 * sin(SWING_SPEED * timeLeft) in [0, 1].
  * 
- * 4. `T(HAND_X, HAND_Y)` posiziona l'impugnatura nella mano di Mario.
+ * 4. T(HAND_X, HAND_Y) posiziona l'impugnatura nella mano di Mario.
  * 
  * Quando il martello è inattivo (o spento durante il lampeggio finale), una scala 0 lo nasconde.
  */

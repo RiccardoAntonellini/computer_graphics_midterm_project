@@ -66,8 +66,7 @@ private:
     /**
      * @brief Calcola la posizione oscillante istantanea del proiettile i-esimo.
      *
-     * Replica lato CPU la stessa legge oraria implementata nel vertex shader `bullet.vert`
-     * (tipicamente un moto armonico lungo Y sfasato in base all'indice), assicurando che
+     * Replica lato CPU la stessa legge oraria implementata nel vertex shader bullet.vert, assicurando che
      * le collisioni corrispondano esattamente a ciò che viene renderizzato.
      *
      * @param index Indice del proiettile nel vettore m_bullets.

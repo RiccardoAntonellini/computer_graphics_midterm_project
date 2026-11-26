@@ -6,10 +6,6 @@
 /**
  * @class BulletsView
  * @brief Gestisce la rappresentazione grafica dei proiettili nella Scene.
- *
- * Utilizza una singola Geometry condivisa (modellata per il proiettile) istanziata
- * 5 volte. Le istanze vengono renderizzate tramite `BulletRenderer` (con shader dedicato
- * bullet.vert) anziché dal renderer standard della scena.
  */
 class BulletsView {
 public:
@@ -21,7 +17,7 @@ public:
     BulletsView(Scene& scene, const Bullets& bullets);
 
     /**
-     * @brief Aggiorna la visibilità delle istanze nella Scene in base allo stato `collected`.
+     * @brief Aggiorna la visibilità delle istanze nella Scene in base allo stato collected.
      * @param scene Scena grafica da aggiornare.
      * @param bullets Stato logico corrente dei proiettili.
      */
@@ -35,7 +31,7 @@ public:
 
     /**
      * @brief Restituisce gli indici delle istanze dei proiettili nella Scene.
-     * @return const std::vector<std::size_t>& Vettore degli indici di istanza (passato a BulletRenderer).
+     * @return const std::vector<std::size_t>& Vettore degli indici di istanza.
      */
     const std::vector<std::size_t>& instances() const { return m_instances; }
 

@@ -15,9 +15,9 @@ enum class MarioState { Walking, Climbing };
  * @class Mario
  * @brief Logica cinematica e stato del giocatore completamente disaccoppiata dal rendering.
  *
- * Il punto di riferimento spaziale m_feet rappresenta il centro orizzontale della base
- * (i piedi): questo semplifica sia il vincolo di appoggio sulle travi inclinate sia la
- * costruzione della Model Matrix del Rig in `MarioView`.
+ * Il punto di riferimento spaziale m_feet rappresenta il centro orizzontale della base: questo 
+ * semplifica sia il vincolo di appoggio sulle travi inclinate sia la
+ * costruzione della Model Matrix del Rig in MarioView.
  */
 class Mario {
 public:

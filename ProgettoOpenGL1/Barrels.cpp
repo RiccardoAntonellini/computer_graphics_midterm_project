@@ -52,20 +52,6 @@ void Barrels::update(float dt, const Level& level)
 
 /**
  * @brief Integra il moto di un singolo barile per un passo temporale dt.
- *
- * Passi fisici:
- * 1. Moto orizzontale e rotolamento puro senza strisciamento:
- *      dx = direction * SPEED * dt
- *      dTheta = -dx / RADIUS
- *    Il segno meno è dovuto alla convenzione antioraria di OpenGL/GLM: un moto verso +X
- *    corrisponde a una rotazione oraria.
- * 
- * 2. Bordi laterali: se a terra il barile esce di scena; se in caduta rimbalza invertendo direction.
- * 
- * 3. Moto verticale: a terra si applica STICK per aderire alla pendenza; in volo si integra
- *    la gravità tramite Eulero semi-implicito (v_y += g * dt, y += v_y * dt).
- * 
- * 4. Appoggio su trave: all'atterraggio il barile adotta il verso di discesa della nuova trave.
  */
 void Barrels::updateOne(Barrel& barrel, float dt, const Level& level)
 {

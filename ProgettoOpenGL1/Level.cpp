@@ -68,15 +68,14 @@ void Level::buildLadders(Scene& scene)
  * @brief Costruisce le 6 travi inclinate a traliccio condividendo solo 2 Geometry unitarie (1x1).
  *
  * Costruzione matematica tramite cambio di sistema di riferimento:
- * 1. Vettore direzione della trave: d = p.right - p.left, lunghezza L = ||d||, angolo theta = atan2(d.y, d.x).
+ * 1. Vettore direzione della trave.
  * 
- * 2. Matrice del riferimento locale della trave: girder = T(p.left) * R_z(theta)
- *    In questo spazio locale la trave è orizzontale da x = 0 a x = L, con la superficie superiore a y = 0.
+ * 2. Matrice del riferimento locale della trave --> in questo spazio locale la trave è orizzontale da x = 0 a x = L, 
+ * con la superficie superiore a y = 0.
  * 
- * 3. Ogni cella del traliccio (larghezza cellWidth, altezza interna innerHeight) contiene due
- *    diagonali lunghe sqrt((cellWidth/2)^2 + innerHeight^2) inclinate di +-atan2(innerHeight, cellWidth/2).
+ * 3. Ogni cella del traliccio contiene due diagonali lunghe  inclinate.
  * 
- * 4. Ogni pezzo (diagonali, barra superiore, barra inferiore) è portato in World Space tramite la composizione M_world = girder * M_local.
+ * 4. Ogni pezzo (diagonali, barra superiore, barra inferiore) è portato in World Space.
  */
 void Level::buildPlatforms(Scene& scene)
 {
